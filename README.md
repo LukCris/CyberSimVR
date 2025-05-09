@@ -43,6 +43,3 @@ git clone https://github.com/tuo-username/CyberSimVR.git
 
 ## 🌐 Team
 - **Project Owner**: Luca Crispino, Ivan Belvito, Lizya Di Molfetta, Alessandro Chisena
-
-## 🚫 Licenza
-Questo progetto è distribuito con licenza **MIT**. Vedi `LICENSE.md` per maggiori informazioni.
