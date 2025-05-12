@@ -8,6 +8,12 @@ public class PCInteractor : MonoBehaviour
     private bool playerInZone = false;
     private bool pcActive = false;
 
+    private void Start()
+    {
+        uiCanvas.SetActive(false); // Forza disattivazione all'avvio
+    }
+
+
     private void Update()
     {
         if (playerInZone && Keyboard.current.fKey.wasPressedThisFrame)
