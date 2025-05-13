@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class PCInteractor : MonoBehaviour
 {
     public GameObject uiCanvas;
+    public GameObject instructionBox;
+
     public PlayerInput playerInput;  // riferito al componente PlayerInput
     private bool playerInZone = false;
     private bool pcActive = false;
@@ -11,8 +13,16 @@ public class PCInteractor : MonoBehaviour
     private void Start()
     {
         uiCanvas.SetActive(false); // Forza disattivazione all'avvio
+        if (instructionBox != null)
+        {
+            Debug.Log("InstructionBox trovato: lo attivo");
+            instructionBox.SetActive(true); // mostra messaggio appena parte la scena
+        }
+        else
+        {
+            Debug.LogWarning("InstructionBox è NULL");
+        }
     }
-
 
     private void Update()
     {
@@ -30,9 +40,12 @@ public class PCInteractor : MonoBehaviour
         Cursor.visible = pcActive;
         Cursor.lockState = pcActive ? CursorLockMode.None : CursorLockMode.Locked;
 
-        // Disattiva SOLO l'input del player, non l'intero GameObject
         if (playerInput != null)
             playerInput.enabled = !pcActive;
+
+        // Nascondi o mostra InstructionBox quando l'utente interagisce
+        if (instructionBox != null)
+            instructionBox.SetActive(false); // Nasconde il messaggio quando interagisce
     }
 
     private void OnTriggerEnter(Collider other)

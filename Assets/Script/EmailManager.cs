@@ -41,6 +41,7 @@ public class EmailUIManager : MonoBehaviour
     public GameObject endScreenPanel;
     public TextMeshProUGUI scoreText;
     public Button nextAttackButton;
+    public GameObject inboxHeader;
 
     [Header("Controlli aggiuntivi")]
     public GameObject closeButton;
@@ -48,8 +49,7 @@ public class EmailUIManager : MonoBehaviour
     [Header("Messaggio popup")]
     public GameObject alreadyClassifiedPopup;
 
-
-
+    
 
     private List<Email> emailList = new List<Email>();
     private Email selectedEmail;
@@ -127,6 +127,7 @@ public class EmailUIManager : MonoBehaviour
         GameObject row = Instantiate(emailRowPrefab, emailListContent);
         Debug.Log("Creo riga per: " + email.sender);
 
+
         row.transform.Find("HeaderRow/SenderText").GetComponent<TextMeshProUGUI>().text = email.sender;
         row.transform.Find("SubjectText").GetComponent<TextMeshProUGUI>().text = email.subject;
         row.transform.Find("HeaderRow/DateText").GetComponent<TextMeshProUGUI>().text = email.date;
@@ -170,8 +171,8 @@ public class EmailUIManager : MonoBehaviour
             }
         });
 
-
     }
+
 }
 
     public void ShowEmailDetail(Email email)
@@ -269,23 +270,25 @@ public class EmailUIManager : MonoBehaviour
     }
 
     void ShowEndScreen()
-{
-    if (closeButton != null)
-    closeButton.SetActive(false);
-
-    endScreenPanel.SetActive(true);
-    emailListPanel.SetActive(false);
-    emailDetailPanel.SetActive(false);
-
-    int score = GetScore(); // calcola percentuale
-    scoreText.text = $"Hai classificato correttamente il {score}% delle email.";
-
-    nextAttackButton.onClick.RemoveAllListeners();
-    nextAttackButton.onClick.AddListener(() =>
     {
-        Debug.Log("Passaggio al prossimo attacco...");
-        // TODO: qui metti la scena successiva o reset
-    });
-}
+        if (closeButton != null)
+        closeButton.SetActive(false);
+
+        endScreenPanel.SetActive(true);
+        emailListPanel.SetActive(false);
+        emailDetailPanel.SetActive(false);
+        inboxHeader.SetActive(false);
+        
+
+        int score = GetScore(); // calcola percentuale
+        scoreText.text = $"Hai classificato correttamente il {score}% delle email.";
+
+        nextAttackButton.onClick.RemoveAllListeners();
+        nextAttackButton.onClick.AddListener(() =>
+        {
+            Debug.Log("Passaggio al prossimo attacco...");
+            // TODO: qui metti la scena successiva o reset
+        });
+    }
 
 }
