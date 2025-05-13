@@ -14,6 +14,7 @@ public class EmailUIManager : MonoBehaviour
         public string date;
         public string body;
         public bool isPhishing;
+        public bool isClassified = false;
     }
 
     [Header("Schermate")]
@@ -44,6 +45,10 @@ public class EmailUIManager : MonoBehaviour
     [Header("Controlli aggiuntivi")]
     public GameObject closeButton;
 
+    [Header("Messaggio popup")]
+    public GameObject alreadyClassifiedPopup;
+
+
 
 
     private List<Email> emailList = new List<Email>();
@@ -64,8 +69,7 @@ public class EmailUIManager : MonoBehaviour
         safeButton.onClick.AddListener(() => ClassifyEmail(false));
     }
 
-    void LoadEmails()
-{
+    void LoadEmails(){
     emailList.Add(new Email
     {
         sender = "segreteria@universita.it",
@@ -132,28 +136,40 @@ public class EmailUIManager : MonoBehaviour
 
         // Imposta il testo e forza il limite a 2 righe
         Transform previewObj = row.transform.Find("PreviewText");
-        if (previewObj == null)
-        {
-            Debug.LogWarning("PreviewText non trovato nel prefab EmailRow!");
-        }
-        else
+        if (previewObj != null)
         {
             TextMeshProUGUI previewTMP = previewObj.GetComponent<TextMeshProUGUI>();
             if (previewTMP != null)
             {
                 previewTMP.text = preview;
-                Debug.Log("Testo anteprima assegnato: " + preview);
                 previewTMP.maxVisibleLines = 2;
+                Debug.Log("Anteprima assegnata per: " + email.sender);
             }
             else
             {
                 Debug.LogWarning("TextMeshProUGUI non trovato su PreviewText!");
             }
         }
+        else
+        {
+            Debug.LogWarning("PreviewText non trovato nel prefab!");
+        }
 
-        row.GetComponent<Button>().onClick.AddListener(() => ShowEmailDetail(email));
-        // Disabilita il bottone dopo il primo click (opzionale, se vuoi)
-        row.GetComponent<Button>().onClick.AddListener(() => row.GetComponent<Button>().interactable = false);
+        
+        Transform checkIcon = row.transform.Find("HeaderRow/CheckIconContainer/CheckIcon");
+        if (checkIcon != null)
+            checkIcon.gameObject.SetActive(email.isClassified);
+            Debug.Log("CheckIcon attivato per: " + email.sender);
+
+        row.GetComponent<Button>().onClick.AddListener(() => {
+            if (!email.isClassified)
+            {
+                ShowEmailDetail(email);
+            }else{
+                ShowAlreadyClassifiedPopup();
+            }
+        });
+
 
     }
 }
@@ -169,6 +185,19 @@ public class EmailUIManager : MonoBehaviour
         bodyText.text = email.body;
     }
 
+    void ShowAlreadyClassifiedPopup()
+    {
+        Debug.Log("MAIL GIÀ CLASSIFICATA — Mostro popup");
+        alreadyClassifiedPopup.SetActive(true);
+        Invoke(nameof(HideAlreadyClassifiedPopup), 2f); // chiudi dopo 2 secondi
+    }
+
+    void HideAlreadyClassifiedPopup()
+    {
+        alreadyClassifiedPopup.SetActive(false);
+    }
+
+
     public void ClassifyEmail(bool markedAsPhishing)
     {
         if (selectedEmail != null)
@@ -177,26 +206,43 @@ public class EmailUIManager : MonoBehaviour
             totalClassified++;
             if (isCorrect) correctClassifications++;
 
-            feedbackText.text = isCorrect ? "✅ Classificazione corretta!" : "❌ Classificazione errata.";
+            selectedEmail.isClassified = true;
+
+            // Disabilita la riga della mail classificata
+            foreach (Transform row in emailListContent)
+            {
+                TextMeshProUGUI sender = row.transform.Find("HeaderRow/SenderText")?.GetComponent<TextMeshProUGUI>();
+                if (sender != null && sender.text == selectedEmail.sender)
+                {
+                    row.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
+                    Transform checkIcon = row.transform.Find("HeaderRow/CheckIconContainer/CheckIcon");
+                    if (checkIcon != null)
+                        checkIcon.gameObject.SetActive(true);
+
+                }
+
+            }
+
+            feedbackText.text = isCorrect ? "Classificazione corretta!" : "Classificazione errata.";
             classificationFeedbackPanel.SetActive(true);
             Invoke(nameof(ProceedAfterFeedback), 2.5f);
-
         }
     }
 
-    void ProceedAfterFeedback()
-{
-    classificationFeedbackPanel.SetActive(false);
 
-    if (totalClassified >= emailList.Count)
+    void ProceedAfterFeedback()
     {
-        ShowEndScreen();
+        classificationFeedbackPanel.SetActive(false);
+
+        if (totalClassified >= emailList.Count)
+        {
+            ShowEndScreen();
+        }
+        else
+        {
+            BackToList();
+        }
     }
-    else
-    {
-        BackToList();
-    }
-}
 
 
     void HideFeedback()
@@ -234,7 +280,6 @@ public class EmailUIManager : MonoBehaviour
     int score = GetScore(); // calcola percentuale
     scoreText.text = $"Hai classificato correttamente il {score}% delle email.";
 
-    // Collegalo via Inspector o nel codice:
     nextAttackButton.onClick.RemoveAllListeners();
     nextAttackButton.onClick.AddListener(() =>
     {
