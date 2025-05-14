@@ -78,12 +78,12 @@ public class EmailUIManager : MonoBehaviour
         body = "Gentile studente,\n\nTi ricordiamo che la consegna del progetto è fissata per il 12 maggio 2025.\n\nCordiali saluti,\nSegreteria Didattica",
         isPhishing = false
     });
-    emailList.Add(new Email {
-    sender = "support@paypal-sicuro.com",
-    subject = "Attività sospetta sul tuo conto",
-    date = "10 maggio 2025",
-    body = "Gentile utente,\n\nAbbiamo rilevato un tentativo di accesso non autorizzato. Clicca qui per verificare le tue credenziali.",
-    isPhishing = true
+        emailList.Add(new Email {
+        sender = "support@paypal-sicuro.com",
+        subject = "Attività sospetta sul tuo conto",
+        date = "10 maggio 2025",
+        body = "Gentile utente,\n\nAbbiamo rilevato un tentativo di accesso non autorizzato. Clicca qui per verificare le tue credenziali.",
+        isPhishing = true
     });
 
     emailList.Add(new Email {
@@ -125,7 +125,7 @@ public class EmailUIManager : MonoBehaviour
     foreach (var email in emailList)
     {
         GameObject row = Instantiate(emailRowPrefab, emailListContent);
-        Debug.Log("Creo riga per: " + email.sender);
+        //Debug.Log("Creo riga per: " + email.sender);
 
 
         row.transform.Find("HeaderRow/SenderText").GetComponent<TextMeshProUGUI>().text = email.sender;
@@ -144,23 +144,15 @@ public class EmailUIManager : MonoBehaviour
             {
                 previewTMP.text = preview;
                 previewTMP.maxVisibleLines = 2;
-                Debug.Log("Anteprima assegnata per: " + email.sender);
+                //Debug.Log("Anteprima assegnata per: " + email.sender);
             }
-            else
-            {
-                Debug.LogWarning("TextMeshProUGUI non trovato su PreviewText!");
-            }
+            
         }
-        else
-        {
-            Debug.LogWarning("PreviewText non trovato nel prefab!");
-        }
-
         
         Transform checkIcon = row.transform.Find("HeaderRow/CheckIconContainer/CheckIcon");
         if (checkIcon != null)
             checkIcon.gameObject.SetActive(email.isClassified);
-            Debug.Log("CheckIcon attivato per: " + email.sender);
+            //Debug.Log("CheckIcon attivato per: " + email.sender);
 
         row.GetComponent<Button>().onClick.AddListener(() => {
             if (!email.isClassified)
@@ -188,7 +180,7 @@ public class EmailUIManager : MonoBehaviour
 
     void ShowAlreadyClassifiedPopup()
     {
-        Debug.Log("MAIL GIÀ CLASSIFICATA — Mostro popup");
+        //Debug.Log("MAIL GIÀ CLASSIFICATA — Mostro popup");
         alreadyClassifiedPopup.SetActive(true);
         Invoke(nameof(HideAlreadyClassifiedPopup), 2f); // chiudi dopo 2 secondi
     }
@@ -224,7 +216,7 @@ public class EmailUIManager : MonoBehaviour
 
             }
 
-            feedbackText.text = isCorrect ? "Classificazione corretta!" : "Classificazione errata.";
+            feedbackText.text = isCorrect ? "Classificazione corretta!" : "Classificazione errata!";
             classificationFeedbackPanel.SetActive(true);
             Invoke(nameof(ProceedAfterFeedback), 2.5f);
         }

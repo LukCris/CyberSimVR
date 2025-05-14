@@ -15,12 +15,7 @@ public class PCInteractor : MonoBehaviour
         uiCanvas.SetActive(false); // Forza disattivazione all'avvio
         if (instructionBox != null)
         {
-            Debug.Log("InstructionBox trovato: lo attivo");
             instructionBox.SetActive(true); // mostra messaggio appena parte la scena
-        }
-        else
-        {
-            Debug.LogWarning("InstructionBox è NULL");
         }
     }
 
