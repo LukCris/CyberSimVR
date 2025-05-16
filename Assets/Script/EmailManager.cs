@@ -175,6 +175,7 @@ public class EmailUIManager : MonoBehaviour
 
         senderText.text = $"From: {email.sender}";
         subjectText.text = $"Subject: {email.subject}";
+        dateText.text = $"Date: {email.date}";
         bodyText.text = email.body;
     }
 
