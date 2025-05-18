@@ -194,6 +194,7 @@ public class EmailUIManager : MonoBehaviour
         selectedEmail = email;
         emailListPanel.SetActive(false);
         emailDetailPanel.SetActive(true);
+        inboxHeader.SetActive(false);
 
         senderText.text = $"From: {email.sender}";
         subjectText.text = $"Subject: {email.subject}";
@@ -279,6 +280,7 @@ public class EmailUIManager : MonoBehaviour
     public void BackToList()
     {
         emailDetailPanel.SetActive(false);
+        inboxHeader.SetActive(true);
         emailListPanel.SetActive(true);
     }
 
