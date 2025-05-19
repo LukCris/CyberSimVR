@@ -9,19 +9,18 @@ CyberSim VR è un'applicazione in realtà virtuale progettata per formare i dipe
 - Fornire un'esperienza formativa coinvolgente e pratica in VR
 
 ## 📂 Scenari simulati
+L'applicazione consta di tre scenari d'attacco simulati di seguito elencati:
 1. **Phishing Email**
-2. **Spear Phishing / CEO Fraud**
-3. **Vishing (voice phishing)**
-4. **Shoulder Surfing (spionaggio fisico)**
-5. **Tailgating (accesso non autorizzato)**
-6. **Ransomware Attack**
-
+I restanti due sono da decidere tra: **Spear Phishing / CEO Fraud**, **Vishing (voice phishing)**, **Shoulder Surfing (spionaggio fisico)**, **Tailgating (accesso non autorizzato)**, **Ransomware Attack**.
 Ogni scenario è rappresentato da una stanza dedicata, con oggetti interattivi, NPC e interfacce UI.
 
 ## 🎓 Debrief e valutazione
-Alla fine della simulazione, l'utente riceve un punteggio basato sulle sue azioni, con feedback specifico per ogni scenario affrontato. Viene mostrata una dashboard di riepilogo con consigli di miglioramento.
+Alla fine di ogni scenario, l'utente riceve un punteggio basato sulle sue azioni, con feedback specifico.
 
-## 📅 Tecnologie utilizzate
+## Quiz finale
+Alla fine di tutti gli scenari, l'utente deve rispondere a una serie di domande a risposta aperta sulla sicurezza informatica.
+
+## 📅 Tecnologie utilizzate (da definire)
 - **Unity** (versione consigliata: 2021.3 LTS o superiore)
 - **XR Toolkit** per supporto VR
 - **ProBuilder** per la modellazione degli ambienti
@@ -34,7 +33,7 @@ Alla fine della simulazione, l'utente riceve un punteggio basato sulle sue azion
 git clone https://github.com/tuo-username/CyberSimVR.git
 ```
 2. Apri il progetto con Unity
-3. Apri la scena `SampleScene`
+3. Apri la scena `IntroScene`
 4. Premi Play per testare l'ambiente o builda per dispositivo VR
 
 ## 🛠️ Requisiti minimi
@@ -42,4 +41,5 @@ git clone https://github.com/tuo-username/CyberSimVR.git
 - Visore VR (Oculus Quest consigliato) **oppure** simulazione da desktop
 
 ## 🌐 Team
-- **Project Owner**: Luca Crispino, Ivan Belvito, Lizya Di Molfetta, Alessandro Chisena
+- **Implementazione dell'applicazione**: Luca Crispino, Ivan Belvito;
+- **Reporting** e **Gestione**: Lizya Di Molfetta, Alessandro Chisena
