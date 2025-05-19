@@ -16,6 +16,7 @@ public class EmailUIManager : MonoBehaviour
         public bool isPhishing;
         public bool isClassified = false;
         public bool correct = false;
+        public string explanation;
     }
 
     [Header("Schermate")]
@@ -47,7 +48,7 @@ public class EmailUIManager : MonoBehaviour
     public GameObject emailHistoryPanel;
     public Transform emailHistoryContent;
     public Button backToEndButton;
-    public GameObject historyHeader; 
+    public GameObject historyHeader;
 
     [Header("Controlli aggiuntivi")]
     public GameObject closeButton;
@@ -86,67 +87,116 @@ public class EmailUIManager : MonoBehaviour
     void LoadEmails(){
     emailList.Add(new Email
     {
-        sender = "segreteria@universita.it",
-        subject = "Reminder: Consegna progetto",
-        date = "9 maggio 2025",
-        body = "Gentile studente,\n\nTi ricordiamo che la consegna del progetto è fissata per il 12 maggio 2025.\n\nCordiali saluti,\nSegreteria Didattica",
-        isPhishing = false,
-        correct = false
-    });
-
-    emailList.Add(new Email
-    {
-        sender = "support@paypal-sicuro.com",
-        subject = "Attività sospetta sul tuo conto",
-        date = "10 maggio 2025",
-        body = "Gentile utente,\n\nAbbiamo rilevato un tentativo di accesso non autorizzato. Clicca qui per verificare le tue credenziali.",
+        sender = "it-support@secure-update.com",
+        subject = "Aggiornamento urgente richiesto",
+        date = "20 maggio 2025",
+        body = "Gentile utente,\n\nPer motivi di sicurezza, è necessario aggiornare le credenziali di rete cliccando sul link seguente.\n\nhttps://secure-it-update.com/login\n\nIT Helpdesk",
         isPhishing = true,
-        correct = false
+        explanation = "Link a dominio esterno sospetto, non aziendale, richiesto aggiornamento credenziali."
     });
 
     emailList.Add(new Email
     {
-        sender = "admin@poliba.it",
-        subject = "Aggiornamento credenziali Poliba",
-        date = "11 maggio 2025",
-        body = "Caro studente,\n\nTi chiediamo di aggiornare le tue credenziali accedendo al portale ufficiale. Grazie.",
-        isPhishing = false,
-        correct = false
-    });
-
-    emailList.Add(new Email
-    {
-        sender = "lotteria@vincituoggi.net",
-        subject = "Hai vinto 1.000.000€!",
-        date = "12 maggio 2025",
-        body = "Congratulazioni! Sei stato selezionato per ricevere un premio. Clicca per riscuotere ora.",
+        sender = "contabilità@aziendaa.com",
+        subject = "Errore nel bonifico – azione richiesta",
+        date = "22 maggio 2025",
+        body = "Gentile collega,\n\nAbbiamo riscontrato un errore nel bonifico del mese. Scarica il documento corretto da questo link: http://doc-upload.com/bn7n88\n\nGrazie,\nUfficio Contabilità",
         isPhishing = true,
-        correct = false
+        explanation = "Dominio simile ma falso ('aziendaa.com'); link sospetto per scaricare file."
     });
 
     emailList.Add(new Email
     {
-        sender = "servizioclienti@amazon.it",
-        subject = "Fattura del tuo ultimo ordine",
-        date = "13 maggio 2025",
-        body = "Caro cliente,\n\nEcco la fattura relativa all’acquisto effettuato il 10 maggio. Grazie per aver scelto Amazon.",
+        sender = "hr@azienda.it",
+        subject = "Conferma ferie approvate",
+        date = "21 maggio 2025",
+        body = "Ciao,\n\nti confermiamo che il tuo periodo di ferie dal 5 al 12 giugno è stato approvato. Per dubbi contatta HR.\n\nSaluti,\nRisorse Umane",
         isPhishing = false,
-        correct = false
+        explanation = "Comunicazione interna HR legittima e prevedibile."
     });
 
     emailList.Add(new Email
     {
-        sender = "ufficiohr@aziendafake.com",
-        subject = "Colloquio di lavoro urgente",
-        date = "14 maggio 2025",
-        body = "Ciao, il tuo profilo ci ha colpiti. Ti chiediamo di inviarci il tuo curriculum aggiornato al link allegato.",
-        isPhishing = true,
-        correct = false
+        sender = "formazione@azienda.it",
+        subject = "Nuovo corso: Protezione dei dati personali",
+        date = "23 maggio 2025",
+        body = "È disponibile un nuovo corso online sulla protezione dei dati, obbligatorio entro il 30 maggio. Accedi tramite la piattaforma aziendale: intranet.azienda.it/formazione",
+        isPhishing = false,
+        explanation = "Corso obbligatorio via intranet ufficiale aziendale."
     });
 
+    emailList.Add(new Email
+    {
+        sender = "ceo.azienda@gmail.com",
+        subject = "Hai 5 minuti?",
+        date = "23 maggio 2025",
+        body = "Sto entrando in una riunione, ma ho bisogno che tu mi faccia un favore urgente. Fammi sapere se ci sei.\n\n[CEO]",
+        isPhishing = true,
+        explanation = "Tentativo di ingegneria sociale: mittente impersona il CEO da Gmail."
+    });
+
+    emailList.Add(new Email
+    {
+        sender = "marketing@azienda.it",
+        subject = "Conferma riunione presentazione Q2",
+        date = "24 maggio 2025",
+        body = "Gentile team,\n\nLa presentazione dei risultati Q2 si terrà domani alle 10.00 in Sala A. In allegato le slide.\n\nGrazie,\nDipartimento Marketing",
+        isPhishing = false,
+        explanation = "Classica comunicazione interna per una riunione, senza anomalie."
+    });
+
+    emailList.Add(new Email
+    {
+        sender = "admin@azlenda.it",
+        subject = "Notifica di aggiornamento VPN",
+        date = "25 maggio 2025",
+        body = "Caro collega,\n\nPer continuare a utilizzare la VPN aziendale, è necessario scaricare il nuovo certificato entro oggi: http://azlenda-it-vpn.com/update\n\nGrazie,\nAmministrazione IT",
+        isPhishing = true,
+        explanation = "Spoofing del dominio ('azlenda.it'), link esterno con nome VPN sospetto."
+    });
+
+    emailList.Add(new Email
+    {
+        sender = "helpdesk@azienda.it",
+        subject = "Problema di accesso risolto",
+        date = "26 maggio 2025",
+        body = "Il problema di accesso segnalato ieri è stato risolto. Se riscontri ulteriori difficoltà, apri un nuovo ticket dal portale assistenza.\n\nSupporto Tecnico",
+        isPhishing = false,
+        explanation = "Email informativa tecnica interna, senza link né richiesta d’azione."
+    });
+
+    emailList.Add(new Email
+    {
+        sender = "supplier-invoices@partnerlog.com",
+        subject = "Pagamento fattura in sospeso",
+        date = "26 maggio 2025",
+        body = "Salve,\n\nLa fattura del mese corrente non risulta saldata. Scarica il PDF e procedi al pagamento: http://invoices-log.net/download\n\nGrazie,\nUfficio Fatturazione",
+        isPhishing = true,
+        explanation = "Il dominio non è quello del vero fornitore; richiesto download da link esterno."
+    });
+
+    emailList.Add(new Email
+    {
+        sender = "pagamenti@direzione-finanza.it",
+        subject = "Autorizzazione urgente richiesta – NDA",
+        date = "27 maggio 2025",
+        body = "Stiamo finalizzando un NDA per un nuovo partner. Serve tua approvazione rapida. Apri il file in allegato e firma digitalmente.\n\nGrazie,\nFinance Director",
+        isPhishing = true,
+        explanation = "Richiesta urgente di firma NDA da un dominio non verificabile."
+    });
+
+    emailList.Add(new Email
+    {
+        sender = "newsletter@azienda.it",
+        subject = "Novità interne – Maggio",
+        date = "28 maggio 2025",
+        body = "Caro team,\n\nNel numero di maggio: nuovi benefit, progetti CSR, risultati del trimestre e appuntamenti formativi. Buona lettura!",
+        isPhishing = false,
+        explanation = "Newsletter informativa interna, senza link sospetti né allegati."
+    });
 
     foreach (Transform child in emailListContent)
-        Destroy(child.gameObject);
+            Destroy(child.gameObject);
 
     foreach (var email in emailList)
     {
@@ -307,27 +357,15 @@ public class EmailUIManager : MonoBehaviour
 
             Transform senderT = row.transform.Find("HeaderRow/SenderText");
             Transform subjectT = row.transform.Find("SubjectText");
+            Transform explanationT = row.transform.Find("ExplanationText");
             Transform previewT = row.transform.Find("PreviewText");
 
-            if (senderT != null && subjectT != null)
+            if (senderT != null && subjectT != null && explanationT != null)
             {
                 TextMeshProUGUI senderTMP = senderT.GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI subjectTMP = subjectT.GetComponent<TextMeshProUGUI>();
-                // Estrai un’anteprima del corpo email (prime 80 lettere)
-                string preview = email.body.Length > 80 ? email.body.Substring(0, 80) + "..." : email.body;
-
-                // Imposta il testo e forza il limite a 2 righe
-                Transform previewObj = row.transform.Find("PreviewText");
-                if (previewObj != null)
-                {
-                    TextMeshProUGUI previewTMP = previewObj.GetComponent<TextMeshProUGUI>();
-                    if (previewTMP != null)
-                    {
-                        previewTMP.text = preview;
-                        previewTMP.maxVisibleLines = 2;
-                    }
-                    
-                }
+                TextMeshProUGUI explanationTMP = explanationT.GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI previewTMP = previewT.GetComponent<TextMeshProUGUI>();
 
                 if (senderTMP != null)
                 {
@@ -339,12 +377,16 @@ public class EmailUIManager : MonoBehaviour
                 {
                     subjectTMP.text = email.subject;
                 }
+
+                if (explanationTMP != null)
+                {
+                    explanationTMP.text = email.explanation;
+                    previewTMP.gameObject.SetActive(false);
+                    explanationTMP.gameObject.SetActive(true);
+                }
             }
         }
     }
-
-    
-
 
     public void CloseHistoryPanel()
     {

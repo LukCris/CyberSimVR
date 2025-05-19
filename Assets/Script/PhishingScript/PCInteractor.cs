@@ -5,7 +5,7 @@ public class PCInteractor : MonoBehaviour
 {
     public GameObject uiCanvas;
     public GameObject instructionBox;
-
+    public GameObject introScenePanel;
     public PlayerInput playerInput;  // riferito al componente PlayerInput
     private bool playerInZone = false;
     private bool pcActive = false;
@@ -13,9 +13,17 @@ public class PCInteractor : MonoBehaviour
     private void Start()
     {
         uiCanvas.SetActive(false); // Forza disattivazione all'avvio
+        instructionBox.SetActive(false);
+        if (introScenePanel != null)
+            introScenePanel.SetActive(true);
+    }
+
+    public void CloseSceneIntro()
+    {
+        introScenePanel.SetActive(false);
         if (instructionBox != null)
         {
-            instructionBox.SetActive(true); // mostra messaggio appena parte la scena
+            instructionBox.SetActive(true);
         }
     }
 
