@@ -5,6 +5,7 @@ public class PhoneInteractor : MonoBehaviour
 {
     public GameObject uiCanvas;
     public GameObject instructionBox;
+    public CallManager callManager;
     public GameObject introScenePanel;
     public PlayerInput playerInput;  // riferito al componente PlayerInput
     private bool playerInZone = false;
@@ -31,11 +32,11 @@ public class PhoneInteractor : MonoBehaviour
     {
         if (playerInZone && Keyboard.current.fKey.wasPressedThisFrame)
         {
-            TogglePC();
+            TogglePhone();
         }
     }
 
-    private void TogglePC()
+    private void TogglePhone()
     {
         phoneActive = !phoneActive;
         uiCanvas.SetActive(phoneActive);
@@ -49,6 +50,7 @@ public class PhoneInteractor : MonoBehaviour
         // Nascondi o mostra InstructionBox quando l'utente interagisce
         if (instructionBox != null)
             instructionBox.SetActive(false); // Nasconde il messaggio quando interagisce
+        callManager.StartCall();
     }
 
     private void OnTriggerEnter(Collider other)

@@ -1,5 +1,5 @@
 using UnityEngine;
-
+// VALUTARE SE TOGLIERE
 public class PhoneInteraction : Interactable
 {
     public GameObject emailUI; // interfaccia da mostrare
