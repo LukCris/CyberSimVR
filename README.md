@@ -11,7 +11,8 @@ CyberSim VR è un'applicazione in realtà virtuale progettata per formare i dipe
 ## 📂 Scenari simulati
 L'applicazione consta di tre scenari d'attacco simulati di seguito elencati:
 1. **Phishing Email**
-I restanti due sono da decidere tra: **Spear Phishing / CEO Fraud**, **Vishing (voice phishing)**, **Shoulder Surfing (spionaggio fisico)**, **Tailgating (accesso non autorizzato)**, **Ransomware Attack**.
+2. **Vishing**
+3. DEFINIRE NOME
 Ogni scenario è rappresentato da una stanza dedicata, con oggetti interattivi, NPC e interfacce UI.
 
 ## 🎓 Debrief e valutazione
