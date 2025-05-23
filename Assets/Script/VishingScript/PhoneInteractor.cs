@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PhoneInteractor : MonoBehaviour
 {
+    public AudioSource phoneRingtone;
     public GameObject uiCanvas;
     public GameObject instructionBox;
     public CallManager callManager;
@@ -26,6 +27,9 @@ public class PhoneInteractor : MonoBehaviour
         {
             instructionBox.SetActive(true);
         }
+        // Parte lo squillo del telefono
+        if (!phoneRingtone.isPlaying)
+            phoneRingtone.Play();
     }
 
     private void Update()
@@ -50,6 +54,9 @@ public class PhoneInteractor : MonoBehaviour
         // Nascondi o mostra InstructionBox quando l'utente interagisce
         if (instructionBox != null)
             instructionBox.SetActive(false); // Nasconde il messaggio quando interagisce
+
+        if (phoneRingtone.isPlaying)
+            phoneRingtone.Stop();
         callManager.StartCall();
     }
 

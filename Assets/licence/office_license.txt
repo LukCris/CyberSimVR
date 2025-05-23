@@ -1,0 +1,11 @@
+Model Information:
+* title:	Canonical Hologra Office
+* source:	https://sketchfab.com/3d-models/canonical-hologra-office-e2b98781e3124418bba6ebe8a4d20646
+* author:	Aeri (https://sketchfab.com/aeri73)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Canonical Hologra Office" (https://sketchfab.com/3d-models/canonical-hologra-office-e2b98781e3124418bba6ebe8a4d20646) by Aeri (https://sketchfab.com/aeri73) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
