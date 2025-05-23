@@ -227,6 +227,7 @@ public class CallManager : MonoBehaviour
             b.gameObject.SetActive(false);
 
         numberCallText.gameObject.SetActive(false);
+        speakerText.gameObject.SetActive(false);
         feedbackText.gameObject.SetActive(false);
         classificationFeedbackPanel.SetActive(false);
 
