@@ -264,8 +264,7 @@ public class CallManager : MonoBehaviour
         {
             SceneManager.LoadScene("FileAnalysisScene");
         });
-        
-        
+
     }
 
 
