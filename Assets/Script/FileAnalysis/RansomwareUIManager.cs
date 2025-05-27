@@ -9,4 +9,3 @@ public class RansomwareUIManager : MonoBehaviour
         fileExplorerPanel.SetActive(true);
     }
 }
-
