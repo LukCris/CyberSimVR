@@ -19,28 +19,26 @@ Ogni scenario è rappresentato da una stanza dedicata, con oggetti interattivi, 
 ## 🎓 Debrief e valutazione
 Alla fine di ogni scenario, l'utente riceve un punteggio basato sulle sue azioni, con feedback specifico.
 
-## Quiz finale
+## 📝 Quiz finale
 Alla fine di tutti gli scenari, l'utente deve rispondere a una serie di domande a risposta aperta sulla sicurezza informatica.
 
-## 📅 Tecnologie utilizzate (da definire)
+## 📅 Tecnologie utilizzate
 - **Unity** (versione consigliata: 2021.3 LTS o superiore)
-- **XR Toolkit** per supporto VR
-- **ProBuilder** per la modellazione degli ambienti
-- **TextMeshPro** per interfacce testuali
+- **Canvas UI** per l'interfaccia utente
 - **C#** per la logica interattiva degli scenari
 
-## 🚀 Come iniziare
+## 🚀 Come avviare il progetto
+Per poter accedere al progetto è necessario installare Unity Hub con Editor Version 6000.1.0f1.
 1. Clona il progetto:
 ```bash
 git clone https://github.com/tuo-username/CyberSimVR.git
 ```
-2. Apri il progetto con Unity
-3. Apri la scena `IntroScene`
-4. Premi Play per testare l'ambiente o builda per dispositivo VR
+2. Apri Unity e aggiungi il progetto (**Add** -> **Add project from disk** -> **CyberSimVR**)
+3. Avvia il progetto, vai nel pannello Project e apri la scena in `Assets/Scenes/IntroScene`
+4. Clicca due volte su Game per ingrandire la schermata di gioco.
+5. Premi Play (▶) nella barra in alto per avviare la simulazione.
 
-## 🛠️ Requisiti minimi
-- Unity 2021.3+ (con supporto 3D)
-- Visore VR (Oculus Quest consigliato) **oppure** simulazione da desktop
+**Nota**: Per una migliore esperienza utente, in modalità Game, clicca su **Free Aspect** e disattiva la funzionalità `Low Resolution Aspect Ratio`.
 
 ## 🌐 Team
 - **Implementazione dell'applicazione**: Luca Crispino, Ivan Belvito;
