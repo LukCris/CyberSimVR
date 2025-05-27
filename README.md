@@ -31,7 +31,7 @@ Alla fine di tutti gli scenari, l'utente deve rispondere a una serie di domande 
 Per poter accedere al progetto è necessario installare Unity Hub con Editor Version 6000.1.0f1.
 1. Clona il progetto:
 ```bash
-git clone https://github.com/tuo-username/CyberSimVR.git
+git clone https://github.com/LukCris/CyberSimVR.git
 ```
 2. Apri Unity e aggiungi il progetto (**Add** -> **Add project from disk** -> **CyberSimVR**)
 3. Avvia il progetto, vai nel pannello Project e apri la scena in `Assets/Scenes/IntroScene`
