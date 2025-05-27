@@ -12,7 +12,7 @@ CyberSim VR è un'applicazione in realtà virtuale progettata per formare i dipe
 L'applicazione consta di tre scenari d'attacco simulati di seguito elencati:
 1. **Phishing Email**
 2. **Vishing**
-3. **File Analysis**
+3. **File Analysis**  
 Ogni scenario è rappresentato da una stanza dedicata, con oggetti interattivi, NPC e interfacce UI.
 
 ## 🎓 Debrief e valutazione
