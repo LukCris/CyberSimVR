@@ -42,14 +42,14 @@ public class FileExplorerManager : MonoBehaviour
 
     void PopulateFileList()
     {
-        Debug.Log($"Popolo {files.Count} file");
+        //Debug.Log($"Popolo {files.Count} file");
 
         foreach (Transform child in fileListContent)
             Destroy(child.gameObject);
 
         foreach (FileData file in files)
         {
-            Debug.Log($"Creo file: {file.fileName}");
+            //Debug.Log($"Creo file: {file.fileName}");
 
             GameObject fileItem = Instantiate(fileItemPrefab, fileListContent);
             fileItem.transform.Find("file_icon").GetComponent<Image>().sprite = file.icon;

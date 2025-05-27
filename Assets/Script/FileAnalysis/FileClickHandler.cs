@@ -8,7 +8,7 @@ public class FileClickHandler : MonoBehaviour, IPointerClickHandler
 
     public void Setup(FileData data, FileExplorerManager mgr)
     {
-        Debug.Log($"Setup chiamato per {data.fileName}");
+        //Debug.Log($"Setup chiamato per {data.fileName}");
         fileData = data;
         manager = mgr;
     }

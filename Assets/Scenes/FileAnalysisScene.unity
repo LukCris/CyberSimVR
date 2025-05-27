@@ -752,13 +752,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cosa sono i file malevoli?
-
-    ...
-
-
-
-'
+  m_text: "Cosa sono i file malevoli?\nUn file malevolo \xE8 un documento che contiene
+    codice o comportamenti dannosi, progettato per compromettere la sicurezza di
+    un dispositivo o rubare dati. Pu\xF2 essere trasmesso tramite email, download
+    da siti web...\n\nCosa devi fare?\nAnalizzare i file mostrati sullo schermo e
+    classificarli come \"Malevoli\" o \"Sicuri\". Utilizza un click destro per visualizzarne
+    i dettagli del file oppure click sinistro per aprirli.\n\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
