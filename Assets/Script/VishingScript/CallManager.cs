@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class CallManager : MonoBehaviour
 {
@@ -250,7 +251,7 @@ public class CallManager : MonoBehaviour
         endScreenPanel.SetActive(true);  // Mostra il pannello finale
     }
 
-    void ShowEndScreen()
+    public void ShowEndScreen()
     {
         endScreenPanel.SetActive(true);
 
@@ -261,10 +262,9 @@ public class CallManager : MonoBehaviour
         nextAttackButton.onClick.RemoveAllListeners();
         nextAttackButton.onClick.AddListener(() =>
         {
-            Debug.Log("Passaggio al prossimo attacco...");
-            // TODO: qui metti la scena successiva o reset
+            SceneManager.LoadScene("FileAnalysisScene");
         });
-        nextAttackButton.onClick.RemoveAllListeners();
+        
         
     }
 
