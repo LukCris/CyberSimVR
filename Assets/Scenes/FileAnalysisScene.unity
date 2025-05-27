@@ -752,7 +752,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Cos'\xE8 iun Ransomware?\r\n\r\n"
+  m_text: 'Cosa sono i file malevoli?
+
+    ...
+
+
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -1518,7 +1524,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 403514269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 086127b90dd36cf46b39d7da3c0b69f5, type: 3}
+  m_Script: {fileID: 11500000, guid: a3aaac9758439034b90e43306f8f6435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fileExplorerPanel: {fileID: 1683175168}
@@ -3675,7 +3681,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SCENARIO DI ANALISI DI FILE SOSPETTI
+  m_text: SCENARIO DI FILE ANALYSIS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -4236,7 +4242,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1869854601}
+      - m_Target: {fileID: 1869854603}
         m_TargetAssemblyTypeName: FileExplorerManager, Assembly-CSharp
         m_MethodName: HideFileDetails
         m_Mode: 1
@@ -5438,7 +5444,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1869854601}
+      - m_Target: {fileID: 1869854603}
         m_TargetAssemblyTypeName: FileExplorerManager, Assembly-CSharp
         m_MethodName: MostraStorico
         m_Mode: 1
@@ -5875,7 +5881,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b7c2073ac94a0694aa82aee930f1abc7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00b4f80922180914db61a32ca397d481, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8775,7 +8781,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1869854602}
-  - component: {fileID: 1869854601}
+  - component: {fileID: 1869854603}
   m_Layer: 0
   m_Name: filexplorermanager
   m_TagString: Untagged
@@ -8783,53 +8789,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1869854601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1869854600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65798607c0d428e4cb7046c803cabd99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fileItemPrefab: {fileID: 2399641644574083536, guid: b9153bbf2fd5ddc4b937b43afb734d0a, type: 3}
-  fileListContent: {fileID: 1609626001}
-  fileDetailsPanel: {fileID: 421004051}
-  endScreenPanel: {fileID: 31645486}
-  infoPopupPanel: {fileID: 669919579}
-  nomeText: {fileID: 2005605299}
-  proprietarioText: {fileID: 2067098275}
-  creazioneText: {fileID: 1740269875}
-  modificaText: {fileID: 1260694330}
-  formatoText: {fileID: 658181527}
-  dimensioneText: {fileID: 932112876}
-  infoPopupText: {fileID: 811764696}
-  endSummaryText: {fileID: 1261042653}
-  storicoPanel: {fileID: 2017747240}
-  storicoContent: {fileID: 4500262}
-  storicoItemPrefab: {fileID: 6107537072135719433, guid: a0f9998adbd7b58408b7de9ed8175632, type: 3}
-  files:
-  - fileName: report
-    format: pdf
-    icon: {fileID: 21300000, guid: c9734a75dd9123e449ff87402d970956, type: 3}
-    creationDate: 21-10-2024
-    modifiedDate: 22-11-2025
-    owner: Peppino Prisco
-    size: 123 MB
-    isMalicious: 0
-    isClassified: 0
-  - fileName: fattura_1
-    format: pdf
-    icon: {fileID: 21300000, guid: c9734a75dd9123e449ff87402d970956, type: 3}
-    creationDate: 02-01-2023
-    modifiedDate: 05-01-2023
-    owner: Rossi Mario
-    size: 120 KB
-    isMalicious: 0
-    isClassified: 0
 --- !u!4 &1869854602
 Transform:
   m_ObjectHideFlags: 0
@@ -8845,6 +8804,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1869854603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869854600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1fa6bcd83f4da43af0770c67dc92e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileItemPrefab: {fileID: 2399641644574083536, guid: 576f26896e52da54ea0d8790aac6f799, type: 3}
+  fileListContent: {fileID: 1609626001}
+  fileDetailsPanel: {fileID: 421004051}
+  endScreenPanel: {fileID: 31645486}
+  infoPopupPanel: {fileID: 669919579}
+  nomeText: {fileID: 2005605299}
+  proprietarioText: {fileID: 2067098275}
+  creazioneText: {fileID: 1740269875}
+  modificaText: {fileID: 1260694330}
+  formatoText: {fileID: 658181527}
+  dimensioneText: {fileID: 932112876}
+  infoPopupText: {fileID: 811764696}
+  endSummaryText: {fileID: 1261042653}
+  storicoPanel: {fileID: 2017747240}
+  storicoContent: {fileID: 4500262}
+  storicoItemPrefab: {fileID: 6107537072135719433, guid: d13d9116131b63c40a755bef18d65e9c, type: 3}
+  files:
+  - fileName: report_Aprile
+    format: pdf
+    icon: {fileID: 21300000, guid: 0261a739d1580f845967bb56eb7058df, type: 3}
+    creationDate: 21-10-2023
+    modifiedDate: 22-05-2025
+    owner: Antonio Conte
+    size: 120 MB
+    isMalicious: 0
+    isClassified: 0
+  - fileName: fattura_maggio25
+    format: pdf
+    icon: {fileID: 21300000, guid: 0261a739d1580f845967bb56eb7058df, type: 3}
+    creationDate: 02-05-2025
+    modifiedDate: 06-05-2025
+    owner: Roberto Mocassino
+    size: 6 MB
+    isMalicious: 0
+    isClassified: 0
 --- !u!65 &1883897688
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9681,7 +9687,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1869854601}
+      - m_Target: {fileID: 1869854603}
         m_TargetAssemblyTypeName: FileExplorerManager, Assembly-CSharp
         m_MethodName: MarkMalicious
         m_Mode: 1
