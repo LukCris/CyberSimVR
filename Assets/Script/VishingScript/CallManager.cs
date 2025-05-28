@@ -74,7 +74,7 @@ public class CallManager : MonoBehaviour
                 nextNodeIndices = new[] { 1, 2 }
             },
 
-            // NODO 1 - Percorso errato
+            // NODO 1 - Chiamata 1, percorso errato
             new CallNode {
                 callID = 1,
                 speakerText = "Clicca su questo link per confermare la tua identità: secure-auth-check.com",
@@ -90,7 +90,7 @@ public class CallManager : MonoBehaviour
                 nextNodeIndices = new[] { 3, 3 }
             },
 
-            // NODO 2 - Percorso corretto
+            // NODO 2 - Chiamata 1, percorso corretto
             new CallNode {
                 callID = 1,
                 speakerText = "Grazie per la prudenza. Ti consiglio di contattare il team IT via portale interno.",
@@ -106,25 +106,9 @@ public class CallManager : MonoBehaviour
                 nextNodeIndices = new[] { 3, 3 }
             },
 
-            // Seconda chiamata – Nodo 3
+            // NODO 3 - Seconda chiamata
             new CallNode {
                 callID = 2,
-                speakerText = "Ciao, sono Roberta dell'amministrazione. Serve il tuo codice fiscale per sistemare un problema contrattuale.",
-                responseOptions = new[] {
-                    "Te lo dico ora.",
-                    "Mi mandi una richiesta via email aziendale?",
-                    "Lo invio su Teams."
-                },
-                correctOptionIndex = 1,
-                feedbacks = new[] {
-                    "Errore. I dati personali non vanno mai condivisi al telefono.",
-                    "Corretto. Usa sempre canali ufficiali.",
-                    "Attenzione! Anche le chat interne non sono sempre sicure."
-                },
-                nextNodeIndices = new[] { 4, 4, 4 }
-            },
-            new CallNode {
-                callID = 3,
                 speakerText = "Buongiorno, sono Lorenzo dell’ufficio acquisti. Il tuo responsabile ha chiesto di saldare urgentemente una fattura in sospeso. Serve conferma immediata.",
                 responseOptions = new[] {
                     "Va bene, puoi mandarmi il link per il pagamento?",
@@ -137,8 +121,42 @@ public class CallManager : MonoBehaviour
                     "Non è sufficiente. Il nome del responsabile può essere facilmente recuperato online.",
                     "Corretto. Le comunicazioni urgenti vanno verificate via canali ufficiali."
                 },
-                nextNodeIndices = new[] { 5, 5, 5 }
+                nextNodeIndices = new[] { 4, 4, 4 }
             },
+
+            // NODO 4 - Inizio terza chiamata
+            new CallNode {
+                callID = 3,
+                speakerText = "Buongiorno, sono Paolo dal supporto. Il tuo account Teams risulta attivo da una postazione esterna non autorizzata. Serve un codice OTP per bloccarlo, te lo invio?",
+                responseOptions = new[] {
+                    "Sì, mandalo pure.",
+                    "No grazie, controllo prima con il reparto IT."
+                },
+                correctOptionIndex = 1,
+                feedbacks = new[] {
+                    "Errore. Potrebbe trattarsi di phishing via OTP.",
+                    "Corretto. Verifica sempre prima con il canale ufficiale."
+                },
+                nextNodeIndices = new[] { 6, 5 }
+            },
+
+            // NODO 5 - Terza chiamata, percorso corretto
+            new CallNode {
+                callID = 3,
+                speakerText = "Capisco, ma il tempo è critico. Se non blocchiamo adesso, perdiamo tutto.",
+                responseOptions = new[] {
+                    "Insisto, voglio prima una conferma interna.",
+                    "Va bene, mandami il codice."
+                },
+                correctOptionIndex = 0,
+                feedbacks = new[] {
+                    "Ottima decisione. La pressione emotiva è tipica degli attacchi social engineering.",
+                    "Errore. Mai agire sotto urgenza senza verifica."
+                },
+                nextNodeIndices = new[] { 6, 6 }
+            },
+
+            // NODO 6 - Quarta chiamata
             new CallNode {
                 callID = 4,
                 speakerText = "Ciao, sono Andrea del reparto IT. Stiamo facendo un controllo sulle estensioni installate in Teams. Mi dici se vedi l’estensione 'AdminTools-Panel' attiva?",
@@ -155,8 +173,6 @@ public class CallManager : MonoBehaviour
                 },
                 nextNodeIndices = new[] { -1, -1, -1 }
             }
-
-
         };
 
     }

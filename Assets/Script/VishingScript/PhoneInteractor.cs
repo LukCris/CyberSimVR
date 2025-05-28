@@ -18,6 +18,8 @@ public class PhoneInteractor : MonoBehaviour
         instructionBox.SetActive(false);
         if (introScenePanel != null)
             introScenePanel.SetActive(true);
+        if (phoneRingtone.isPlaying)
+            phoneRingtone.Stop();
     }
 
     public void CloseSceneIntro()
