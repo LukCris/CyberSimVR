@@ -3,6 +3,7 @@ using UnityEngine;
 public class IntroManager : MonoBehaviour
 {
     public GameObject introPanel;
+    public CallManager callManager;  // Riferimento al CallManager
 
     void Start()
     {
@@ -12,5 +13,11 @@ public class IntroManager : MonoBehaviour
     public void StartScenario()
     {
         introPanel.SetActive(false);
+    }
+
+    public void StartScenarioCall()
+    {
+        introPanel.SetActive(false);
+        callManager.StartAudio(); // Fa partire subito l'audio del nodo 0
     }
 }

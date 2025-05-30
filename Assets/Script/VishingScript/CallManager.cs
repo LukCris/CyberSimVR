@@ -15,6 +15,10 @@ public class CallManager : MonoBehaviour
     public TextMeshProUGUI feedbackText;
     public GameObject classificationFeedbackPanel;
 
+    [Header("Audio")]
+    public AudioSource audioSource; // AudioSource per riprodurre l’audio
+    public List<AudioClip> nodeAudioClips; // Lista AudioClip associata ai nodi, ordinata come callNodes
+
     [Header("Step data")]
     public List<CallNode> callNodes;
 
@@ -33,7 +37,7 @@ public class CallManager : MonoBehaviour
 
     private int currentNodeIndex = 0;
     private int correctAnswers = 0;
-
+    public bool audioStarted = false;
 
     [System.Serializable]
     public class CallNode
@@ -109,7 +113,7 @@ public class CallManager : MonoBehaviour
             // NODO 3 - Seconda chiamata
             new CallNode {
                 callID = 2,
-                speakerText = "Buongiorno, sono Lorenzo dell’ufficio acquisti. Il tuo responsabile ha chiesto di saldare urgentemente una fattura in sospeso. Serve conferma immediata.",
+                speakerText = "Buongiorno, sono Linda dell’ufficio acquisti. Il tuo responsabile ha chiesto di saldare urgentemente una fattura in sospeso. Serve conferma immediata.",
                 responseOptions = new[] {
                     "Va bene, puoi mandarmi il link per il pagamento?",
                     "Mi confermi il nome del mio responsabile, per favore?",
@@ -127,7 +131,7 @@ public class CallManager : MonoBehaviour
             // NODO 4 - Inizio terza chiamata
             new CallNode {
                 callID = 3,
-                speakerText = "Buongiorno, sono Paolo dal supporto. Il tuo account Teams risulta attivo da una postazione esterna non autorizzata. Serve un codice OTP per bloccarlo, te lo invio?",
+                speakerText = "Buongiorno, sono Alice dal supporto. Il tuo account Teams risulta attivo da una postazione esterna non autorizzata. Serve un codice OTP per bloccarlo, te lo invio?",
                 responseOptions = new[] {
                     "Sì, mandalo pure.",
                     "No grazie, controllo prima con il reparto IT."
@@ -185,6 +189,17 @@ public class CallManager : MonoBehaviour
         ShowNode();
     }
 
+    // Metodo per avviare l'audio
+    public void StartAudio()
+    {
+        if (audioSource != null && nodeAudioClips != null && currentNodeIndex < nodeAudioClips.Count)
+        {
+            audioSource.Stop();
+            audioSource.clip = nodeAudioClips[currentNodeIndex];
+            audioSource.Play();
+            audioStarted = true;  // Settiamo flag a true per far partire l’audio
+        }
+    }
 
     void ShowNode()
     {
@@ -211,11 +226,23 @@ public class CallManager : MonoBehaviour
 
         feedbackText.gameObject.SetActive(false);
         classificationFeedbackPanel.SetActive(false);
+        
+        if (audioStarted)
+        {
+            StartAudio();
+        }
+
     }
     
 
     void OnOptionSelected(int selectedIndex)
     {
+        // --- AUDIO: ferma audio appena l’utente risponde ---
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+
         CallNode node = callNodes[currentNodeIndex];
         bool isCorrect = selectedIndex == node.correctOptionIndex;
 
