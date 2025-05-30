@@ -17,7 +17,7 @@ public class PhoneInteractor : MonoBehaviour
         uiCanvas.SetActive(false); // Forza disattivazione all'avvio
         instructionBox.SetActive(false);
         if (introScenePanel != null)
-            introScenePanel.SetActive(false);
+            introScenePanel.SetActive(true);
         if (phoneRingtone.isPlaying)
             phoneRingtone.Stop();
     }
