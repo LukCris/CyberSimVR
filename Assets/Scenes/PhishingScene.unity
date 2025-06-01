@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introPanel: {fileID: 271825898}
+  callManager: {fileID: 0}
 --- !u!4 &8883951
 Transform:
   m_ObjectHideFlags: 0
@@ -4866,6 +4867,7 @@ GameObject:
   - component: {fileID: 894432367}
   - component: {fileID: 894432366}
   - component: {fileID: 894432369}
+  - component: {fileID: 894432370}
   m_Layer: 5
   m_Name: BodyText
   m_TagString: Untagged
@@ -5011,6 +5013,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
+--- !u!114 &894432370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894432365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082d8f219890f9f42905f9c866ac6dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &906043924
 GameObject:
   m_ObjectHideFlags: 0
@@ -10683,7 +10697,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 50}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2093674548
 MonoBehaviour:

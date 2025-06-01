@@ -1,9 +1,10 @@
-// EmailManager.cs migliorato con classificazione e feedback
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using UnityEngine.EventSystems;
 
 public class EmailUIManager : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class EmailUIManager : MonoBehaviour
         public bool isClassified = false;
         public bool correct = false;
         public string explanation;
+        public bool hasClickedLink = false;
     }
 
     [Header("Schermate")]
@@ -35,7 +37,7 @@ public class EmailUIManager : MonoBehaviour
     public TextMeshProUGUI senderText;
     public TextMeshProUGUI subjectText;
     public TextMeshProUGUI dateText;
-    public TextMeshProUGUI bodyText;
+    public TextMeshProUGUI bodyText;  // Qui mostro il corpo (TMP)
 
     [Header("Bottoni di classificazione")]
     public Button phishingButton;
@@ -45,7 +47,7 @@ public class EmailUIManager : MonoBehaviour
     public GameObject endScreenPanel;
     public TextMeshProUGUI scoreText;
     public Button nextAttackButton;
-    public Button showHistoryButton;  // Bottone per mostrare lo storico
+    public Button showHistoryButton;
     public GameObject emailHistoryPanel;
     public Transform emailHistoryContent;
     public Button backToEndButton;
@@ -58,11 +60,24 @@ public class EmailUIManager : MonoBehaviour
     public GameObject alreadyClassifiedPopup;
 
 
-
     private List<Email> emailList = new List<Email>();
     private Email selectedEmail;
     private int correctClassifications = 0;
     private int totalClassified = 0;
+
+    // Riferimento al componente TMPLinkHandler che intercetta i click sui link
+    private TMPLinkHandler _linkHandler;
+
+
+    void Awake()
+    {
+        // Attacca o recupera TMPLinkHandler su bodyText
+        _linkHandler = bodyText.gameObject.GetComponent<TMPLinkHandler>();
+        if (_linkHandler == null)
+            _linkHandler = bodyText.gameObject.AddComponent<TMPLinkHandler>();
+
+        _linkHandler.OnLinkClicked += OnBodyLinkClicked;
+    }
 
     void Start()
     {
@@ -71,18 +86,15 @@ public class EmailUIManager : MonoBehaviour
         ShowEmailList();
         emailDetailPanel.SetActive(false);
         classificationFeedbackPanel.SetActive(false);
-
-        emailHistoryPanel.SetActive(false);  // Pannello dello storico nascosto
+        emailHistoryPanel.SetActive(false);
 
         correctClassifications = 0;
         totalClassified = 0;
 
         phishingButton.onClick.AddListener(() => ClassifyEmail(true));
         safeButton.onClick.AddListener(() => ClassifyEmail(false));
-
-        showHistoryButton.onClick.AddListener(ShowEmailHistory);  // Mostra lo storico quando cliccato
+        showHistoryButton.onClick.AddListener(ShowEmailHistory);
         backToEndButton.onClick.AddListener(CloseHistoryPanel);
-
     }
 
     void LoadEmails()
@@ -122,7 +134,7 @@ public class EmailUIManager : MonoBehaviour
             sender = "formazione@azienda.it",
             subject = "Nuovo corso: Protezione dei dati personali",
             date = "23 maggio 2025",
-            body = "È disponibile un nuovo corso online sulla protezione dei dati, obbligatorio entro il 30 maggio. Accedi tramite la piattaforma aziendale: intranet.azienda.it/formazione",
+            body = "È disponibile un nuovo corso online sulla protezione dei dati, obbligatorio entro il 30 maggio. Accedi tramite la piattaforma aziendale: https://intranet.azienda.it/formazione",
             isPhishing = false,
             explanation = "Corso obbligatorio via intranet ufficiale aziendale."
         });
@@ -135,16 +147,6 @@ public class EmailUIManager : MonoBehaviour
             body = "Sto entrando in una riunione, ma ho bisogno che tu mi faccia un favore urgente. Fammi sapere se ci sei.\n\n[CEO]",
             isPhishing = true,
             explanation = "Tentativo di ingegneria sociale: mittente impersona il CEO da Gmail."
-        });
-
-        emailList.Add(new Email
-        {
-            sender = "marketing@azienda.it",
-            subject = "Conferma riunione presentazione Q2",
-            date = "24 maggio 2025",
-            body = "Gentile team,\n\nLa presentazione dei risultati Q2 si terrà domani alle 10.00 in Sala A. In allegato le slide.\n\nGrazie,\nDipartimento Marketing",
-            isPhishing = false,
-            explanation = "Classica comunicazione interna per una riunione, senza anomalie."
         });
 
         emailList.Add(new Email
@@ -179,16 +181,6 @@ public class EmailUIManager : MonoBehaviour
 
         emailList.Add(new Email
         {
-            sender = "pagamenti@direzione-finanza.it",
-            subject = "Autorizzazione urgente richiesta – NDA",
-            date = "27 maggio 2025",
-            body = "Stiamo finalizzando un NDA per un nuovo partner. Serve tua approvazione rapida. Apri il file in allegato e firma digitalmente.\n\nGrazie,\nFinance Director",
-            isPhishing = true,
-            explanation = "Richiesta urgente di firma NDA da un dominio non verificabile."
-        });
-
-        emailList.Add(new Email
-        {
             sender = "newsletter@azienda.it",
             subject = "Novità interne – Maggio",
             date = "28 maggio 2025",
@@ -203,45 +195,27 @@ public class EmailUIManager : MonoBehaviour
         foreach (var email in emailList)
         {
             GameObject row = Instantiate(emailRowPrefab, emailListContent);
-
             row.transform.Find("HeaderRow/SenderText").GetComponent<TextMeshProUGUI>().text = email.sender;
-            row.transform.Find("SubjectText").GetComponent<TextMeshProUGUI>().text = email.subject;
-            row.transform.Find("HeaderRow/DateText").GetComponent<TextMeshProUGUI>().text = email.date;
+            row.transform.Find("SubjectText").GetComponent<TextMeshProUGUI>().text      = email.subject;
+            row.transform.Find("HeaderRow/DateText").GetComponent<TextMeshProUGUI>().text   = email.date;
 
-            // Estrai un’anteprima del corpo email (prime 80 lettere)
             string preview = email.body.Length > 80 ? email.body.Substring(0, 80) + "..." : email.body;
-
-            // Imposta il testo e forza il limite a 2 righe
             Transform previewObj = row.transform.Find("PreviewText");
-            if (previewObj != null)
-            {
+            if (previewObj != null) {
                 TextMeshProUGUI previewTMP = previewObj.GetComponent<TextMeshProUGUI>();
-                if (previewTMP != null)
-                {
-                    previewTMP.text = preview;
-                    previewTMP.maxVisibleLines = 2;
-                }
-
+                previewTMP.text = preview;
+                previewTMP.maxVisibleLines = 2;
             }
 
             Transform checkIcon = row.transform.Find("HeaderRow/CheckIconContainer/CheckIcon");
             if (checkIcon != null)
                 checkIcon.gameObject.SetActive(email.isClassified);
 
-            row.GetComponent<Button>().onClick.AddListener(() =>
-            {
-                if (!email.isClassified)
-                {
-                    ShowEmailDetail(email);
-                }
-                else
-                {
-                    ShowAlreadyClassifiedPopup();
-                }
+            row.GetComponent<Button>().onClick.AddListener(() => {
+                if (!email.isClassified) ShowEmailDetail(email);
+                else ShowAlreadyClassifiedPopup();
             });
-
         }
-
     }
 
     public void ShowEmailDetail(Email email)
@@ -254,13 +228,16 @@ public class EmailUIManager : MonoBehaviour
         senderText.text = $"From: {email.sender}";
         subjectText.text = $"Subject: {email.subject}";
         dateText.text = $"Date: {email.date}";
-        bodyText.text = email.body;
+
+        // Trasforma ogni URL in un TMP <link> colorato e sottolineato
+        string bodyWithLinks = ConvertUrlsToTMPLinks(email.body);
+        bodyText.text = bodyWithLinks;
     }
 
     void ShowAlreadyClassifiedPopup()
     {
         alreadyClassifiedPopup.SetActive(true);
-        Invoke(nameof(HideAlreadyClassifiedPopup), 2f); // chiudi dopo 2 secondi
+        Invoke(nameof(HideAlreadyClassifiedPopup), 2f);
     }
 
     void HideAlreadyClassifiedPopup()
@@ -268,62 +245,86 @@ public class EmailUIManager : MonoBehaviour
         alreadyClassifiedPopup.SetActive(false);
     }
 
-
-    public void ClassifyEmail(bool markedAsPhishing)
+    /* 
+    Converte ogni occorrenza di http:// o https://... 
+    in un tag TMP <link="url"><color=blue><u>url</u></color></link>.
+    */
+    string ConvertUrlsToTMPLinks(string plainBody)
     {
-        if (selectedEmail != null)
+        var urlPattern = @"http[s]?://[^\s]+";
+        return Regex.Replace(
+            plainBody,
+            urlPattern,
+            match =>
+            {
+                string url = match.Value;
+                return $"<link=\"{url}\"><color=#0000FF><u>{url}</u></color></link>";
+            });
+    }
+
+    // Viene chiamato da TMPLinkHandler ogni volta che il player clicca un link nel bodyText.
+    private void OnBodyLinkClicked(string url)
+    {
+        if (selectedEmail != null && selectedEmail.isPhishing && !selectedEmail.isClassified)
         {
-            bool isCorrect = (markedAsPhishing == selectedEmail.isPhishing);
-            totalClassified++;
-            if (isCorrect)
-            {
-                correctClassifications++;
-                selectedEmail.correct = true;
-            }
+            // Classifichiamo come errata la mail perché l’utente ha cliccato un link di phishing
+            ClassifyEmail(false);
 
-            selectedEmail.isClassified = true;
-
-            // Disabilita la riga della mail classificata
-            foreach (Transform row in emailListContent)
-            {
-                TextMeshProUGUI sender = row.transform.Find("HeaderRow/SenderText")?.GetComponent<TextMeshProUGUI>();
-                if (sender != null && sender.text == selectedEmail.sender)
-                {
-                    row.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
-                    Transform checkIcon = row.transform.Find("HeaderRow/CheckIconContainer/CheckIcon");
-                    if (checkIcon != null)
-                        checkIcon.gameObject.SetActive(true);
-
-                }
-
-            }
-
-            feedbackText.text = isCorrect ? "Classificazione corretta!" : "Classificazione errata!";
+            feedbackText.text = "Hai cliccato su un link di phishing! La mail è stata classificata come errata.";
             classificationFeedbackPanel.SetActive(true);
             Invoke(nameof(ProceedAfterFeedback), 2.5f);
         }
     }
 
+    public void ClassifyEmail(bool markedAsPhishing)
+    {
+        if (selectedEmail == null) return;
+
+        bool isCorrect = (markedAsPhishing == selectedEmail.isPhishing);
+        totalClassified++;
+        if (isCorrect)
+        {
+            correctClassifications++;
+            selectedEmail.correct = true;
+        }
+        selectedEmail.isClassified = true;
+
+        // Disabilita la riga corrispondente nella lista
+        foreach (Transform row in emailListContent)
+        {
+            TextMeshProUGUI sender = row.transform.Find("HeaderRow/SenderText")?.GetComponent<TextMeshProUGUI>();
+            if (sender != null && sender.text == selectedEmail.sender)
+            {
+                row.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
+                Transform checkIcon = row.transform.Find("HeaderRow/CheckIconContainer/CheckIcon");
+                if (checkIcon != null) checkIcon.gameObject.SetActive(true);
+            }
+        }
+
+        feedbackText.text = isCorrect ? "Classificazione corretta!" : "Classificazione errata!";
+        classificationFeedbackPanel.SetActive(true);
+        Invoke(nameof(ProceedAfterFeedback), 2.5f);
+    }
 
     void ProceedAfterFeedback()
     {
         classificationFeedbackPanel.SetActive(false);
-
         if (totalClassified >= emailList.Count)
-        {
             ShowEndScreen();
-        }
         else
-        {
             BackToList();
-        }
     }
 
-
-    void HideFeedback()
+    void ShowEndScreen()
     {
-        classificationFeedbackPanel.SetActive(false);
-        BackToList();
+        if (closeButton != null) closeButton.SetActive(false);
+        endScreenPanel.SetActive(true);
+        emailListPanel.SetActive(false);
+        emailDetailPanel.SetActive(false);
+        inboxHeader.SetActive(false);
+
+        int score = GetScore();
+        scoreText.text = $"Hai classificato correttamente il {score}% delle email.";
     }
 
     public void ShowEmailList()
@@ -346,9 +347,9 @@ public class EmailUIManager : MonoBehaviour
 
     public void ShowEmailHistory()
     {
-        emailHistoryPanel.SetActive(true);  // Mostra il pannello dello storico
+        emailHistoryPanel.SetActive(true);
         historyHeader.SetActive(true);
-        PopulateEmailHistory();  // Popola il pannello con le email
+        PopulateEmailHistory();
     }
 
     private void PopulateEmailHistory()
@@ -359,65 +360,37 @@ public class EmailUIManager : MonoBehaviour
         foreach (var email in emailList)
         {
             GameObject row = Instantiate(emailRowPrefab, emailHistoryContent);
-
-            Transform senderT = row.transform.Find("HeaderRow/SenderText");
-            Transform subjectT = row.transform.Find("SubjectText");
+            Transform senderT    = row.transform.Find("HeaderRow/SenderText");
+            Transform subjectT   = row.transform.Find("SubjectText");
             Transform explanationT = row.transform.Find("ExplanationText");
-            Transform previewT = row.transform.Find("PreviewText");
+            Transform previewT   = row.transform.Find("PreviewText");
 
             if (senderT != null && subjectT != null && explanationT != null)
             {
-                TextMeshProUGUI senderTMP = senderT.GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI subjectTMP = subjectT.GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI senderTMP      = senderT.GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI subjectTMP     = subjectT.GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI explanationTMP = explanationT.GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI previewTMP = previewT.GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI previewTMP     = previewT.GetComponent<TextMeshProUGUI>();
 
-                if (senderTMP != null)
-                {
-                    senderTMP.text = email.sender;
-                    senderTMP.color = email.correct ? new Color(0.0f, 0.8f, 0.0f) : new Color(0.9f, 0.0f, 0.0f);
-                }
-
-                if (subjectTMP != null)
-                {
-                    subjectTMP.text = email.subject;
-                }
-
-                if (explanationTMP != null)
-                {
-                    explanationTMP.text = email.explanation;
-                    previewTMP.gameObject.SetActive(false);
-                    explanationTMP.gameObject.SetActive(true);
-                }
+                senderTMP.text  = email.sender;
+                senderTMP.color = email.correct ? new Color(0.0f, 0.8f, 0.0f) : new Color(0.9f, 0.0f, 0.0f);
+                subjectTMP.text = email.subject;
+                explanationTMP.text = email.explanation;
+                previewTMP.gameObject.SetActive(false);
+                explanationTMP.gameObject.SetActive(true);
             }
         }
     }
 
     public void CloseHistoryPanel()
     {
-        emailHistoryPanel.SetActive(false);  // Nascondi il pannello dello storico
+        emailHistoryPanel.SetActive(false);
         historyHeader.SetActive(false);
-        endScreenPanel.SetActive(true);  // Mostra il pannello finale
-    }
-
-    void ShowEndScreen()
-    {
-        if (closeButton != null)
-            closeButton.SetActive(false);
-
         endScreenPanel.SetActive(true);
-        emailListPanel.SetActive(false);
-        emailDetailPanel.SetActive(false);
-        inboxHeader.SetActive(false);
-
-
-        int score = GetScore(); // calcola percentuale
-        scoreText.text = $"Hai classificato correttamente il {score}% delle email.";
     }
-    
+
     public void NextAttackScene()
     {
         SceneManager.LoadScene("VishingScene");
     }
-
 }
