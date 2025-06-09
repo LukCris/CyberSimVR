@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class FileExplorerManager : MonoBehaviour
 {
@@ -159,6 +161,12 @@ public class FileExplorerManager : MonoBehaviour
         infoPopupPanel.SetActive(false);
     }
 
+    public void NextScene()
+    {
+        SceneManager.LoadScene("FinalQuizScene");
+    }
+
+
     public void MostraStorico()
     {
         storicoPanel.SetActive(true);
@@ -185,3 +193,4 @@ public class FileResponse
     public bool correct;
     public string explanation;
 }
+
