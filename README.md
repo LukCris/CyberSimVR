@@ -33,9 +33,8 @@ Per provare la build giocabile di CyberSim VR, segui questi passaggi:
 2. **Estrai il contenuto**. Estrai il file `.zip` in una cartella di tua scelta sul computer.
 3.  **Avvia il gioco**. All'interno della cartella estratta, fai doppio clic sul file: `CyberSim VR.exe`
 
-### 📩 Feedback
+## 📩 Feedback
 Se trovi bug o problemi, apri una [Issue] (https://github.com/LukCris/CyberSimVR/issues) nel repository.
-**Nota**: Per una migliore esperienza utente, in modalità Game, clicca su **Free Aspect** e disattiva la funzionalità `Low Resolution Aspect Ratio`.
 
 ## 🌐 Team
 - **Implementazione dell'applicazione**: Luca Crispino, Ivan Belvito;
