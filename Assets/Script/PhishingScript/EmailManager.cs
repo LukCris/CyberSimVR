@@ -114,7 +114,7 @@ public class EmailUIManager : MonoBehaviour
             sender = "contabilità@aziendaa.com",
             subject = "Errore nel bonifico – azione richiesta",
             date = "22 maggio 2025",
-            body = "Gentile collega,\n\nAbbiamo riscontrato un errore nel bonifico del mese. Scarica il documento corretto da questo link: http://doc-upload.com/bn7n88\n\nGrazie,\nUfficio Contabilità",
+            body = "Gentile collega,\n\nAbbiamo riscontrato un errore nel bonifico del mese. Scarica il documento corretto da questo link: \n\nhttp://doc-upload.com/bn7n88\n\nGrazie,\nUfficio Contabilità",
             isPhishing = true,
             explanation = "Dominio simile ma falso ('aziendaa.com'); link sospetto per scaricare file."
         });
@@ -154,7 +154,7 @@ public class EmailUIManager : MonoBehaviour
             sender = "admin@azlenda.it",
             subject = "Notifica di aggiornamento VPN",
             date = "25 maggio 2025",
-            body = "Caro collega,\n\nPer continuare a utilizzare la VPN aziendale, è necessario scaricare il nuovo certificato entro oggi: http://azlenda-it-vpn.com/update\n\nGrazie,\nAmministrazione IT",
+            body = "Caro collega,\n\nPer continuare a utilizzare la VPN aziendale, è necessario scaricare il nuovo certificato entro oggi: \n\nhttp://azlenda-it-vpn.com/update\n\nGrazie,\nAmministrazione IT",
             isPhishing = true,
             explanation = "Spoofing del dominio ('azlenda.it'), link esterno con nome VPN sospetto."
         });
@@ -174,7 +174,7 @@ public class EmailUIManager : MonoBehaviour
             sender = "supplier-invoices@partnerlog.com",
             subject = "Pagamento fattura in sospeso",
             date = "26 maggio 2025",
-            body = "Salve,\n\nLa fattura del mese corrente non risulta saldata. Scarica il PDF e procedi al pagamento: http://invoices-log.net/download\n\nGrazie,\nUfficio Fatturazione",
+            body = "Salve,\n\nLa fattura del mese corrente non risulta saldata. Scarica il PDF e procedi al pagamento: \n\nhttp://invoices-log.net/download\n\nGrazie,\nUfficio Fatturazione",
             isPhishing = true,
             explanation = "Il dominio non è quello del vero fornitore; richiesto download da link esterno."
         });
