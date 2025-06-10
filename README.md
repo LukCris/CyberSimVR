@@ -28,16 +28,13 @@ Alla fine di tutti gli scenari, l'utente deve rispondere a una serie di domande 
 - **C#** per la logica interattiva degli scenari
 
 ## 🚀 Come avviare il progetto
-Per poter accedere al progetto è necessario installare Unity Hub con Editor Version 6000.1.0f1.
-1. Clona il progetto:
-```bash
-git clone https://github.com/LukCris/CyberSimVR.git
-```
-2. Apri Unity e aggiungi il progetto (**Add** -> **Add project from disk** -> **CyberSimVR**)
-3. Avvia il progetto, vai nel pannello Project e apri la scena in `Assets/Scenes/IntroScene`
-4. Clicca due volte su Game per ingrandire la schermata di gioco.
-5. Premi Play (▶) nella barra in alto per avviare la simulazione.
+Per provare la build giocabile di CyberSim VR, segui questi passaggi:
+1. **Scarica la release**. Vai nella sezione [Releases] (https://github.com/LukCris/CyberSimVR/releases) di questo repository. Scarica l'ultima versione disponibile.
+2. **Estrai il contenuto**. Estrai il file `.zip` in una cartella di tua scelta sul computer.
+3.  **Avvia il gioco**. All'interno della cartella estratta, fai doppio clic sul file: `CyberSim VR.exe`
 
+### 📩 Feedback
+Se trovi bug o problemi, apri una [Issue] (https://github.com/LukCris/CyberSimVR/issues) nel repository.
 **Nota**: Per una migliore esperienza utente, in modalità Game, clicca su **Free Aspect** e disattiva la funzionalità `Low Resolution Aspect Ratio`.
 
 ## 🌐 Team
