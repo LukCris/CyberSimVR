@@ -33,7 +33,8 @@ Per provare la build giocabile di CyberSim VR, segui questi passaggi:
 2. **Estrai il contenuto**. Estrai il file `.zip` in una cartella di tua scelta sul computer.
 3.  **Avvia il gioco**. All'interno della cartella estratta, fai doppio clic sul file: `CyberSim VR.exe`
 
-> ⚠️ **Nota per gli utenti Windows:**  
+> ⚠️**Nota per gli utenti:**
+> Attualmente l'applicazione è compatibile **solo** con Windows.
 > All'avvio dell'applicazione, Windows Defender SmartScreen potrebbe bloccare l'esecuzione mostrando un avviso di "App non riconosciuta".  
 > In tal caso, clicca su **"Ulteriori informazioni"** e poi su **"Esegui comunque"** per continuare.
 
