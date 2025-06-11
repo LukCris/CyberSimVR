@@ -1240,9 +1240,8 @@ MonoBehaviour:
   m_text: "CyberSim VR \xE8 un simulatore immersivo progettato per migliorare la
     consapevolezza e la reattivit\xE0 dei dipendenti rispetto alle minacce informatiche.\nAttraverso
     scenari realistici e interattivi, gli utenti imparano a riconoscere tentativi
-    di phishing, comportamenti sospetti e buone pratiche di sicurezza informatica.\nUno
-    strumento formativo coinvolgente, pensato per integrare i programmi di cybersecurity
-    awareness aziendale."
+    di phishing, vishing e riconoscimento di file malevoli. Alla fine di tutti gli
+    scenari, gli utenti potranno rispondere a domande sulla sicurezza informatica."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
