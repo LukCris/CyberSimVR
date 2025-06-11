@@ -12,8 +12,10 @@ public class CallManager : MonoBehaviour
     public TextMeshProUGUI numberCallText;
     public TextMeshProUGUI speakerText;
     public Button[] responseButtons;
-    public TextMeshProUGUI feedbackText;
-    public GameObject classificationFeedbackPanel;
+    public TextMeshProUGUI wrongfeedbackText;
+    public TextMeshProUGUI correctfeedbackText;
+    public GameObject correctClassificationFeedbackPanel;
+    public GameObject wrongClassificationFeedbackPanel;
 
     [Header("Audio")]
     public AudioSource audioSource; // AudioSource per riprodurre l’audio
@@ -55,7 +57,8 @@ public class CallManager : MonoBehaviour
     {
         backgroundPanel.SetActive(true);
         callCanvasGroup.alpha = 0f;
-        feedbackText.gameObject.SetActive(false);
+        correctfeedbackText.gameObject.SetActive(false);
+        wrongfeedbackText.gameObject.SetActive(false);
 
         showHistoryButton.onClick.AddListener(ShowHistory);
         backToEndButton.onClick.AddListener(CloseHistoryPanel);
@@ -224,8 +227,10 @@ public class CallManager : MonoBehaviour
             }
         }
 
-        feedbackText.gameObject.SetActive(false);
-        classificationFeedbackPanel.SetActive(false);
+        wrongfeedbackText.gameObject.SetActive(false);
+        correctfeedbackText.gameObject.SetActive(false);
+        correctClassificationFeedbackPanel.SetActive(false);
+        wrongClassificationFeedbackPanel.SetActive(false);
         
         if (audioStarted)
         {
@@ -247,13 +252,21 @@ public class CallManager : MonoBehaviour
         bool isCorrect = selectedIndex == node.correctOptionIndex;
 
         if (isCorrect)
+        {
             correctAnswers++;
+            correctfeedbackText.text = node.feedbacks[selectedIndex];
+            correctfeedbackText.gameObject.SetActive(true);
+            correctClassificationFeedbackPanel.SetActive(true);
+        }
+        else
+        {
+            wrongfeedbackText.text = node.feedbacks[selectedIndex];
+            wrongfeedbackText.gameObject.SetActive(true);
+            wrongClassificationFeedbackPanel.SetActive(true);
+        }
+            
 
-        feedbackText.text = node.feedbacks[selectedIndex];
-        feedbackText.gameObject.SetActive(true);
-        classificationFeedbackPanel.SetActive(true);
-
-        SaveAnswerToHistory(node.speakerText, node.responseOptions[selectedIndex], isCorrect);
+        SaveAnswerToHistory(node.speakerText, node.responseOptions[selectedIndex], node.feedbacks[selectedIndex], isCorrect);
 
         int nextIndex = node.nextNodeIndices[selectedIndex];
         if (nextIndex == -1)
@@ -272,8 +285,10 @@ public class CallManager : MonoBehaviour
 
         numberCallText.gameObject.SetActive(false);
         speakerText.gameObject.SetActive(false);
-        feedbackText.gameObject.SetActive(false);
-        classificationFeedbackPanel.SetActive(false);
+        wrongfeedbackText.gameObject.SetActive(false);
+        correctfeedbackText.gameObject.SetActive(false);
+        correctClassificationFeedbackPanel.SetActive(false);
+        wrongClassificationFeedbackPanel.SetActive(false);
 
         ShowEndScreen();
 
@@ -311,13 +326,14 @@ public class CallManager : MonoBehaviour
     }
 
 
-    void SaveAnswerToHistory(string question, string answer, bool correct)
+    void SaveAnswerToHistory(string question, string answer, string feedback, bool correct)
     {
         GameObject row = Instantiate(answerRowPrefab, answerHistoryContent);
         var texts = row.GetComponentsInChildren<TextMeshProUGUI>();
         texts[0].text = question;
         texts[1].text = answer;
         texts[1].color = correct ? Color.green : Color.red;
+        texts[2].text = feedback;
     }
 
     System.Collections.IEnumerator FadeInCanvas()

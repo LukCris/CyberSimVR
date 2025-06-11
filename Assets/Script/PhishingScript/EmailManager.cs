@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine.EventSystems;
+using System.Collections;
+
 
 public class EmailUIManager : MonoBehaviour
 {
@@ -25,8 +27,9 @@ public class EmailUIManager : MonoBehaviour
     [Header("Schermate")]
     public GameObject emailListPanel;
     public GameObject emailDetailPanel;
-    public GameObject classificationFeedbackPanel;
+    public GameObject correctclassificationPanel;
     public TextMeshProUGUI feedbackText;
+    public GameObject wrongclassificationPanel;
     public GameObject inboxHeader;
 
     [Header("Prefabs e Container")]
@@ -85,7 +88,8 @@ public class EmailUIManager : MonoBehaviour
         endScreenPanel.SetActive(false);
         ShowEmailList();
         emailDetailPanel.SetActive(false);
-        classificationFeedbackPanel.SetActive(false);
+        wrongclassificationPanel.SetActive(false);
+        correctclassificationPanel.SetActive(false);
         emailHistoryPanel.SetActive(false);
 
         correctClassifications = 0;
@@ -262,6 +266,12 @@ public class EmailUIManager : MonoBehaviour
             });
     }
 
+    private IEnumerator DelayedProceed(bool isCorrect, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ProceedAfterFeedback(isCorrect);
+    }
+
     // Viene chiamato da TMPLinkHandler ogni volta che il player clicca un link nel bodyText.
     private void OnBodyLinkClicked(string url)
     {
@@ -271,8 +281,8 @@ public class EmailUIManager : MonoBehaviour
             ClassifyEmail(false);
 
             feedbackText.text = "Hai cliccato su un link di phishing! La mail è stata classificata come errata.";
-            classificationFeedbackPanel.SetActive(true);
-            Invoke(nameof(ProceedAfterFeedback), 2.5f);
+            wrongclassificationPanel.SetActive(true);
+            StartCoroutine(DelayedProceed(false, 2.5f));
         }
     }
 
@@ -301,14 +311,27 @@ public class EmailUIManager : MonoBehaviour
             }
         }
 
-        feedbackText.text = isCorrect ? "Classificazione corretta!" : "Classificazione errata!";
-        classificationFeedbackPanel.SetActive(true);
-        Invoke(nameof(ProceedAfterFeedback), 2.5f);
+        if (isCorrect)
+        {
+            correctclassificationPanel.SetActive(true);
+        }
+        else
+        {
+            wrongclassificationPanel.SetActive(true);
+        }
+        StartCoroutine(DelayedProceed(isCorrect, 2.5f));
     }
 
-    void ProceedAfterFeedback()
+    void ProceedAfterFeedback(bool isCorrect)
     {
-        classificationFeedbackPanel.SetActive(false);
+        if (isCorrect)
+        {
+            correctclassificationPanel.SetActive(false);
+        }
+        else
+        {
+            wrongclassificationPanel.SetActive(false);
+        }
         if (totalClassified >= emailList.Count)
             ShowEndScreen();
         else
@@ -373,7 +396,7 @@ public class EmailUIManager : MonoBehaviour
                 TextMeshProUGUI previewTMP     = previewT.GetComponent<TextMeshProUGUI>();
 
                 senderTMP.text  = email.sender;
-                senderTMP.color = email.correct ? new Color(0.0f, 0.8f, 0.0f) : new Color(0.9f, 0.0f, 0.0f);
+                senderTMP.color = email.correct ? Color.green : Color.red;
                 subjectTMP.text = email.subject;
                 explanationTMP.text = email.explanation;
                 previewTMP.gameObject.SetActive(false);
