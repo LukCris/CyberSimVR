@@ -347,7 +347,7 @@ MonoBehaviour:
   startButton: {fileID: 1266731795}
   infoButton: {fileID: 2099838838}
   fadeDuration: 2
-  nextSceneName: PhishingScene
+  nextSceneName: FileAnalysisScene
 --- !u!114 &469354677
 MonoBehaviour:
   m_ObjectHideFlags: 0

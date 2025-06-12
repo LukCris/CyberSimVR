@@ -15,19 +15,15 @@ public class FileClickHandler : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left)
+            return;
+
         if (fileData.isClassified)
         {
             manager.ShowTemporaryMessage("File già classificato!");
             return;
         }
 
-        if (eventData.button == PointerEventData.InputButton.Right)
-        {
-            manager.ShowFileDetails(fileData);
-        }
-        else if (eventData.button == PointerEventData.InputButton.Left)
-        {
-            manager.ExecuteFile(fileData);
-        }
+        manager.ShowFileDetails(fileData);
     }
 }
