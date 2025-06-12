@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,7 +55,20 @@ public class FileExplorerManager : MonoBehaviour
 
             GameObject fileItem = Instantiate(fileItemPrefab, fileListContent);
             fileItem.transform.Find("file_icon").GetComponent<Image>().sprite = file.icon;
-            fileItem.transform.Find("file_name").GetComponent<TMP_Text>().text = $"{file.fileName}.{file.format}";
+
+            TMP_Text fileNameText = fileItem.transform.Find("file_name").GetComponent<TMP_Text>();
+
+            
+            if (file.isClassified)
+            {
+                fileNameText.text = $"{file.fileName}.{file.format}";
+                fileNameText.color = Color.gray;
+            }
+            else
+            {
+                fileNameText.text = $"{file.fileName}.{file.format}";
+                fileNameText.color = Color.white; // o quello che usi di default
+            }
 
             FileClickHandler handler = fileItem.GetComponent<FileClickHandler>();
             if (handler != null)
@@ -64,6 +77,31 @@ public class FileExplorerManager : MonoBehaviour
             }
         }
     }
+
+    public void ShowInfoPopup(bool isCorrect)
+    {
+        infoPopupPanel.SetActive(true);
+
+        infoPopupText.text = isCorrect ? "Classificazione corretta!" : "Classificazione errata!";
+        infoPopupText.color = Color.black;
+
+        var img = infoPopupPanel.GetComponent<Image>();
+        if (img != null)
+        {
+            img.color = isCorrect
+                ? new Color(0f, 1f, 0f, 0.4f)  // verde semi-trasparente
+                : new Color(1f, 0f, 0f, 0.4f); // rosso semi-trasparente
+        }
+
+        StartCoroutine(HideInfoPopupAfterDelay(2f));
+    }
+
+    IEnumerator HideInfoPopupAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        infoPopupPanel.SetActive(false);
+    }
+
 
     public void ShowFileDetails(FileData f)
     {
@@ -91,25 +129,29 @@ public class FileExplorerManager : MonoBehaviour
         processedFiles.Add(currentDetailFile.fileName);
 
         bool correct = currentDetailFile.isMalicious;
-        ShowTemporaryMessage(correct ? "Risposta corretta!" : "Risposta errata!");
+        ShowInfoPopup(correct);
 
         rispostaStorico.Add(new FileResponse
         {
             fileName = currentDetailFile.fileName,
             userAnswer = "Segnato malevolo",
             correct = correct,
-            explanation = correct ? "Il file conteneva codice pericoloso." : "Il file era innocuo, classificazione errata."
+            explanation = correct
+                ? "Il file conteneva codice pericoloso."
+                : "Il file era innocuo, classificazione errata."
         });
 
         HideFileDetails();
         UpdateScore(correct ? 1 : 0, correct ? 0 : 1);
+        PopulateFileList();
     }
+
 
     public void ExecuteFile(FileData f)
     {
         if (f.isClassified)
         {
-            ShowTemporaryMessage("File gi‡ classificato!");
+            ShowTemporaryMessage("File gi√† classificato!");
             return;
         }
 
@@ -117,18 +159,22 @@ public class FileExplorerManager : MonoBehaviour
         processedFiles.Add(f.fileName);
 
         bool correct = !f.isMalicious;
-        ShowTemporaryMessage(correct ? "Risposta corretta!" : "Risposta errata!");
+        ShowInfoPopup(correct);
 
         rispostaStorico.Add(new FileResponse
         {
             fileName = f.fileName,
             userAnswer = "Aperto",
             correct = correct,
-            explanation = correct ? "» un file sicuro, nessun comportamento sospetto rilevato." : "Conteneva codice potenzialmente dannoso."
+            explanation = correct
+                ? "√à un file sicuro, nessun comportamento sospetto rilevato."
+                : "Conteneva codice potenzialmente dannoso."
         });
 
         UpdateScore(correct ? 1 : 0, correct ? 0 : 1);
+        PopulateFileList(); 
     }
+
 
     void UpdateScore(int correct, int wrong)
     {
@@ -164,6 +210,14 @@ public class FileExplorerManager : MonoBehaviour
     public void NextScene()
     {
         SceneManager.LoadScene("FinalQuizScene");
+    }
+
+    public void ExecuteCurrentFile()
+    {
+        if (currentDetailFile == null) return;
+
+        ExecuteFile(currentDetailFile);
+        HideFileDetails();
     }
 
 
