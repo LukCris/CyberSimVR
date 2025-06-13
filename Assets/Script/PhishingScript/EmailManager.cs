@@ -51,10 +51,20 @@ public class EmailUIManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public Button nextAttackButton;
     public Button showHistoryButton;
-    public GameObject emailHistoryPanel;
-    public Transform emailHistoryContent;
     public Button backToEndButton;
+    
+
+    [Header("Schermata storico")]
+    public GameObject emailHistoryPanel;
+    public GameObject historyDetailPanel;
+    public TextMeshProUGUI historysenderText;
+    public TextMeshProUGUI historysubjectText;
+    public TextMeshProUGUI historydateText;
+    public TextMeshProUGUI historybodyText;
+    public TextMeshProUGUI explanationText;
+    public Transform emailHistoryContent;
     public GameObject historyHeader;
+
 
     [Header("Controlli aggiuntivi")]
     public GameObject closeButton;
@@ -200,12 +210,13 @@ public class EmailUIManager : MonoBehaviour
         {
             GameObject row = Instantiate(emailRowPrefab, emailListContent);
             row.transform.Find("HeaderRow/SenderText").GetComponent<TextMeshProUGUI>().text = email.sender;
-            row.transform.Find("SubjectText").GetComponent<TextMeshProUGUI>().text      = email.subject;
-            row.transform.Find("HeaderRow/DateText").GetComponent<TextMeshProUGUI>().text   = email.date;
+            row.transform.Find("SubjectText").GetComponent<TextMeshProUGUI>().text = email.subject;
+            row.transform.Find("HeaderRow/DateText").GetComponent<TextMeshProUGUI>().text = email.date;
 
             string preview = email.body.Length > 80 ? email.body.Substring(0, 80) + "..." : email.body;
             Transform previewObj = row.transform.Find("PreviewText");
-            if (previewObj != null) {
+            if (previewObj != null)
+            {
                 TextMeshProUGUI previewTMP = previewObj.GetComponent<TextMeshProUGUI>();
                 previewTMP.text = preview;
                 previewTMP.maxVisibleLines = 2;
@@ -215,12 +226,15 @@ public class EmailUIManager : MonoBehaviour
             if (checkIcon != null)
                 checkIcon.gameObject.SetActive(email.isClassified);
 
-            row.GetComponent<Button>().onClick.AddListener(() => {
+            row.GetComponent<Button>().onClick.AddListener(() =>
+            {
                 if (!email.isClassified) ShowEmailDetail(email);
                 else ShowAlreadyClassifiedPopup();
             });
         }
     }
+
+    // Gestione Mail nella lista e nei dettagli
 
     public void ShowEmailDetail(Email email)
     {
@@ -338,18 +352,6 @@ public class EmailUIManager : MonoBehaviour
             BackToList();
     }
 
-    void ShowEndScreen()
-    {
-        if (closeButton != null) closeButton.SetActive(false);
-        endScreenPanel.SetActive(true);
-        emailListPanel.SetActive(false);
-        emailDetailPanel.SetActive(false);
-        inboxHeader.SetActive(false);
-
-        int score = GetScore();
-        scoreText.text = $"Hai classificato correttamente il {score}% delle email.";
-    }
-
     public void ShowEmailList()
     {
         emailDetailPanel.SetActive(false);
@@ -361,6 +363,20 @@ public class EmailUIManager : MonoBehaviour
         emailDetailPanel.SetActive(false);
         inboxHeader.SetActive(true);
         emailListPanel.SetActive(true);
+    }
+
+    // Gestione schermata finale
+
+    void ShowEndScreen()
+    {
+        if (closeButton != null) closeButton.SetActive(false);
+        endScreenPanel.SetActive(true);
+        emailListPanel.SetActive(false);
+        emailDetailPanel.SetActive(false);
+        inboxHeader.SetActive(false);
+
+        int score = GetScore();
+        scoreText.text = $"Hai classificato correttamente il {score}% delle email.";
     }
 
     public int GetScore()
@@ -383,26 +399,53 @@ public class EmailUIManager : MonoBehaviour
         foreach (var email in emailList)
         {
             GameObject row = Instantiate(emailRowPrefab, emailHistoryContent);
-            Transform senderT    = row.transform.Find("HeaderRow/SenderText");
-            Transform subjectT   = row.transform.Find("SubjectText");
+            Transform senderT = row.transform.Find("HeaderRow/SenderText");
+            Transform subjectT = row.transform.Find("SubjectText");
             Transform explanationT = row.transform.Find("ExplanationText");
-            Transform previewT   = row.transform.Find("PreviewText");
+            Transform previewT = row.transform.Find("PreviewText");
 
             if (senderT != null && subjectT != null && explanationT != null)
             {
-                TextMeshProUGUI senderTMP      = senderT.GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI subjectTMP     = subjectT.GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI senderTMP = senderT.GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI subjectTMP = subjectT.GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI explanationTMP = explanationT.GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI previewTMP     = previewT.GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI previewTMP = previewT.GetComponent<TextMeshProUGUI>();
 
-                senderTMP.text  = email.sender;
+                senderTMP.text = email.sender;
                 senderTMP.color = email.correct ? Color.green : Color.red;
                 subjectTMP.text = email.subject;
                 explanationTMP.text = email.explanation;
                 previewTMP.gameObject.SetActive(false);
                 explanationTMP.gameObject.SetActive(true);
             }
+
+            row.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                ShowEmailDetailHistory(email);
+                
+            });
         }
+    }
+
+    public void ShowEmailDetailHistory(Email email)
+    {
+        selectedEmail = email;
+        emailHistoryPanel.SetActive(false);
+        historyDetailPanel.SetActive(true);
+        historyHeader.SetActive(false);
+
+        historysenderText.text = $"From: {email.sender}";
+        historysubjectText.text = $"Subject: {email.subject}";
+        historydateText.text = $"Date: {email.date}";
+        historybodyText.text = $"{email.body}";
+        explanationText.text = $"{email.explanation}";
+    }
+
+    public void BackToHistoryList()
+    {
+        historyDetailPanel.SetActive(false);
+        emailHistoryPanel.SetActive(true);
+        historyHeader.SetActive(true);
     }
 
     public void CloseHistoryPanel()
@@ -416,4 +459,5 @@ public class EmailUIManager : MonoBehaviour
     {
         SceneManager.LoadScene("VishingScene");
     }
+    
 }

@@ -10,7 +10,7 @@ public class IntroTitleAnimator : MonoBehaviour
     public Button startButton;
     public Button infoButton;
     public float fadeDuration = 2f;
-    public string nextSceneName = "PhishingScenes";
+    public string nextSceneName = "PhishingScene";
 
     private void Start()
     {

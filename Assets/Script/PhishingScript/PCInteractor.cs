@@ -15,7 +15,7 @@ public class PCInteractor : MonoBehaviour
         uiCanvas.SetActive(false); // Forza disattivazione all'avvio
         instructionBox.SetActive(false);
         if (introScenePanel != null)
-            introScenePanel.SetActive(true);
+            introScenePanel.SetActive(false);
     }
 
     public void CloseSceneIntro()
