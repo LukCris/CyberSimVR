@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 772.8
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 52959
+  controlID: 75
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 52960
+  controlID: 76
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 50}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 52961
+  controlID: 70
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -246,8 +246,8 @@ MonoBehaviour:
     y: 0
     width: 451.19995
     height: 541.6
-  m_MinSize: {x: 276, y: 76}
-  m_MaxSize: {x: 4001, y: 4026}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -422,10 +422,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 53.400024}
-      m_SelectedIDs: 201a0100
-      m_LastClickedID: 72224
-      m_ExpandedIDs: 94d2feff2adafeff38dafeff3adafeff3edafeff46dafeff4adafeffd844ffffba64ffff4a6bffff6878ffff187effffda8bffffa091ffffd29effff9ca4ffffd2b1ffff60ccffff08d4ffffded9ffff26dfffff6ce4ffffbaf2ffffd8faffff6ed200007cd20000b6d20000e8d600002cd700007ad7000006d8000050d80000ded8000088d90000ead90000fae900001eeb000056ec0000b8ec0000dcf4000000f6000038f700009af700004c00010070010100a80201000a0301006a190100de190100201a01009c1a0100b21a0100c01a01001e1b01003e1b0100901b01009a1b0100
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 386b0000
+      m_LastClickedID: 0
+      m_ExpandedIDs: fafaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -897,7 +897,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
-    m_Value: {x: -0, y: 0, z: -0, w: -1}
+    m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
     m_Target: 1001.15875
     speed: 2
@@ -1103,7 +1103,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Script/PhishingScript
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1113,16 +1113,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 57
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Script/PhishingScript
   m_LastFoldersGridSize: 57
   m_LastProjectPath: C:\Users\lpaco\CyberSim VR
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 175}
-    m_SelectedIDs: 84c20000
-    m_LastClickedID: 49796
-    m_ExpandedIDs: 000000000cc200000ec2000010c2000000ca9a3b
+    m_SelectedIDs: 0ac30000
+    m_LastClickedID: 49930
+    m_ExpandedIDs: 000000006cc200006ec2000070c2000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1151,7 +1151,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000000cc200000ec2000010c2000000ca9a3b
+    m_ExpandedIDs: 000000006cc200006ec2000070c20000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1179,7 +1179,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000076b60000ea0f010000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
