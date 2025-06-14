@@ -75,21 +75,21 @@ public class QuizManager : MonoBehaviour
         sceltaPassword.titoloArgomento = "Scelta password";
         sceltaPassword.tutteLeDomande = new List<QuizDomanda>
         {
-            new QuizDomanda { domanda = "Quale delle password è più sicura?", opzioni = new List<string>{ "ciao", "wdwydgwidk", "nome_cognome", "data di nascita" }, rispostaCorretta = 1, spiegazione = "Una password lunga e casuale è più sicura." },
-            new QuizDomanda { domanda = "Qual è la pratica migliore nella scelta di una password?", opzioni = new List<string>{ "Nome del cane", "Password lunga, con simboli", "Numero del telefono", "Nome dell’azienda" }, rispostaCorretta = 1, spiegazione = "Più lunga e varia è meglio." },
-            new QuizDomanda { domanda = "Una buona password dovrebbe...", opzioni = new List<string>{ "Essere semplice da ricordare", "Contenere almeno 12 caratteri", "Essere uguale su tutti i siti", "Includere il tuo nome" }, rispostaCorretta = 1, spiegazione = "La lunghezza è un fattore critico." },
-            new QuizDomanda { domanda = "Quale password è meno sicura?", opzioni = new List<string>{ "z$kL8@1xM", "123456", "K9!uR3", "z7?MpW4" }, rispostaCorretta = 1, spiegazione = "123456 è tra le più violate al mondo." },
+            new QuizDomanda { domanda = "Quale delle password ï¿½ piï¿½ sicura?", opzioni = new List<string>{ "ciao", "wdwydgwidk", "nome_cognome", "data di nascita" }, rispostaCorretta = 1, spiegazione = "Una password lunga e casuale ï¿½ piï¿½ sicura." },
+            new QuizDomanda { domanda = "Qual ï¿½ la pratica migliore nella scelta di una password?", opzioni = new List<string>{ "Nome del cane", "Password lunga, con simboli", "Numero del telefono", "Nome dellï¿½azienda" }, rispostaCorretta = 1, spiegazione = "Piï¿½ lunga e varia ï¿½ meglio." },
+            new QuizDomanda { domanda = "Una buona password dovrebbe...", opzioni = new List<string>{ "Essere semplice da ricordare", "Contenere almeno 12 caratteri", "Essere uguale su tutti i siti", "Includere il tuo nome" }, rispostaCorretta = 1, spiegazione = "La lunghezza ï¿½ un fattore critico." },
+            new QuizDomanda { domanda = "Quale password ï¿½ meno sicura?", opzioni = new List<string>{ "z$kL8@1xM", "123456", "K9!uR3", "z7?MpW4" }, rispostaCorretta = 1, spiegazione = "Le ultime due non sono abbastanza lunghe. Invece, 123456 ï¿½ tra le piï¿½ violate al mondo." },
             new QuizDomanda { domanda = "Cosa NON dovresti mai usare in una password?", opzioni = new List<string>{ "Simboli e numeri casuali", "Data di nascita", "Lettere maiuscole", "Parole inventate" }, rispostaCorretta = 1, spiegazione = "Le informazioni personali sono facilmente indovinabili." },
-            new QuizDomanda { domanda = "Qual è il rischio di usare la stessa password ovunque?", opzioni = new List<string>{ "Nessun rischio", "Maggiore esposizione se un sito viene violato", "Maggiore privacy", "Velocità di login" }, rispostaCorretta = 1, spiegazione = "Un sito compromesso mette a rischio tutti gli altri." },
-            new QuizDomanda { domanda = "Quale password è migliore?", opzioni = new List<string>{ "123456", "PizzaPazza2020", "&3Fv9!kM2q", "IlMioNome1990" }, rispostaCorretta = 2, spiegazione = "Solo la terza è complessa e casuale." },
-            new QuizDomanda { domanda = "Cosa significa 'password complessa'?", opzioni = new List<string>{ "Difficile da digitare", "Include caratteri, numeri e simboli", "Molto lunga ma semplice", "Scritta tutta in maiuscolo" }, rispostaCorretta = 1, spiegazione = "Serve varietà di caratteri." },
-            new QuizDomanda { domanda = "Le password basate su parole del dizionario...", opzioni = new List<string>{ "Sono le migliori", "Sono deboli e prevedibili", "Sono consigliate", "Non fanno differenza" }, rispostaCorretta = 1, spiegazione = "Sono soggette ad attacchi dizionario." },
-            new QuizDomanda { domanda = "Quale password è più sicura tra queste?", opzioni = new List<string>{ "Password123", "nomecognome123", "$9aF%tU7!", "qwerty" }, rispostaCorretta = 2, spiegazione = "È l’unica non ovvia." },
-            new QuizDomanda { domanda = "Usare solo lettere in una password...", opzioni = new List<string>{ "È sufficiente", "È raccomandato", "Non è sicuro", "È più veloce da scrivere" }, rispostaCorretta = 2, spiegazione = "Serve varietà nei caratteri." },
-            new QuizDomanda { domanda = "Perché è utile usare un generatore di password?", opzioni = new List<string>{ "Ti fa risparmiare tempo", "Crea password forti e uniche", "Evita la registrazione", "Non serve usarlo" }, rispostaCorretta = 1, spiegazione = "Evita schemi prevedibili." },
-            new QuizDomanda { domanda = "Dove NON dovresti mai scrivere la tua password?", opzioni = new List<string>{ "In un foglio nella scrivania", "In un gestore password cifrato", "In un file criptato", "In un'app autorizzata" }, rispostaCorretta = 0, spiegazione = "Il foglio fisico è rischioso." },
-            new QuizDomanda { domanda = "Quando dovresti cambiare la tua password?", opzioni = new List<string>{ "Solo se la dimentichi", "Ogni 6-12 mesi o in caso di sospetti", "Mai", "Dopo ogni accesso" }, rispostaCorretta = 1, spiegazione = "La regolarità è importante." },
-            new QuizDomanda { domanda = "Il metodo delle '3 parole casuali' è...", opzioni = new List<string>{ "Sicuro se combinate con simboli", "Non funziona mai", "Obsoleto", "Uguale a '123456'" }, rispostaCorretta = 0, spiegazione = "È un metodo moderno e valido se arricchito." },
+            new QuizDomanda { domanda = "Qual ï¿½ il rischio di usare la stessa password ovunque?", opzioni = new List<string>{ "Nessun rischio", "Maggiore esposizione se un sito viene violato", "Maggiore privacy", "Velocitï¿½ di login" }, rispostaCorretta = 1, spiegazione = "Se un sito compromesso mette a rischio tutti gli altri." },
+            new QuizDomanda { domanda = "Quale password ï¿½ migliore?", opzioni = new List<string>{ "123456", "PizzaPazza2020", "&3Fv9!kM2q", "IlMioNome1990" }, rispostaCorretta = 2, spiegazione = "Non ï¿½ una password complessa e casuale." },
+            new QuizDomanda { domanda = "Cosa significa 'password complessa'?", opzioni = new List<string>{ "Difficile da digitare", "Include caratteri, numeri e simboli", "Molto lunga ma semplice", "Scritta tutta in maiuscolo" }, rispostaCorretta = 1, spiegazione = "Serve varietï¿½ di caratteri." },
+            new QuizDomanda { domanda = "Le password basate su parole del dizionario (raccolta delle password piÃ¹ utilizzate)...", opzioni = new List<string>{ "Sono le migliori", "Sono deboli e prevedibili", "Sono consigliate", "Non fanno differenza" }, rispostaCorretta = 1, spiegazione = "Sono soggette ad attacchi a dizionario." },
+            new QuizDomanda { domanda = "Quale password ï¿½ piï¿½ sicura tra queste?", opzioni = new List<string>{ "Password123", "nomecognome123", "$9aF%tU7!", "qwerty" }, rispostaCorretta = 2, spiegazione = "ï¿½ una password semplice." },
+            new QuizDomanda { domanda = "Usare solo lettere in una password...", opzioni = new List<string>{ "ï¿½ sufficiente", "ï¿½ raccomandato", "Non ï¿½ sicuro", "ï¿½ piï¿½ veloce da scrivere" }, rispostaCorretta = 2, spiegazione = "Serve varietï¿½ nei caratteri." },
+            new QuizDomanda { domanda = "Perchï¿½ ï¿½ utile usare un generatore di password?", opzioni = new List<string>{ "Ti fa risparmiare tempo", "Crea password forti e uniche", "Evita la registrazione", "Non serve usarlo" }, rispostaCorretta = 1, spiegazione = "Evita schemi prevedibili." },
+            new QuizDomanda { domanda = "Dove NON dovresti mai scrivere la tua password?", opzioni = new List<string>{ "In un foglio nella scrivania", "In un gestore password cifrato", "In un file criptato", "In un'app autorizzata" }, rispostaCorretta = 0, spiegazione = "Il foglio fisico ï¿½ rischioso." },
+            new QuizDomanda { domanda = "Quando dovresti cambiare la tua password?", opzioni = new List<string>{ "Solo se la dimentichi", "Ogni 6-12 mesi o in caso di sospetti", "Mai", "Dopo ogni accesso" }, rispostaCorretta = 1, spiegazione = "La regolaritï¿½ ï¿½ importante." },
+            new QuizDomanda { domanda = "Il metodo delle '3 parole casuali' ï¿½...", opzioni = new List<string>{ "Sicuro se combinate con simboli", "Non funziona mai", "Obsoleto", "Uguale a '123456'" }, rispostaCorretta = 0, spiegazione = "ï¿½ un metodo moderno e valido se arricchito." },
         };
 
         tuttiGliArgomenti.Add(sceltaPassword);
@@ -100,19 +100,19 @@ public class QuizManager : MonoBehaviour
         phishingSituazionale.tutteLeDomande = new List<QuizDomanda>
         {
             new QuizDomanda {
-                domanda = "Ricevi un’email da PayPal che ti dice: 'Il tuo conto è sospeso. Clicca qui per riattivarlo'. Cosa fai?",
-                opzioni = new List<string>{ "Clicco subito il link", "Ignoro", "Accedo manualmente al sito da browser", "Rispondo all’email" },
+                domanda = "Ricevi unï¿½email da PayPal che ti dice: 'Il tuo conto ï¿½ sospeso. Clicca qui per riattivarlo'. Cosa fai?",
+                opzioni = new List<string>{ "Clicco subito il link", "Ignoro", "Accedo manualmente al sito da browser", "Rispondo allï¿½email" },
                 rispostaCorretta = 2,
-                spiegazione = "Mai cliccare link sospetti. Accedi direttamente da browser per verificare."
+                spiegazione = "Mai cliccare link sospetti o rispondere a mail sospette. Accedi direttamente da browser per verificare."
             },
             new QuizDomanda {
-                domanda = "Un’email ti informa che hai vinto un buono Amazon da 500€. Devi solo cliccare un link. Cosa fai?",
+                domanda = "Unï¿½email ti informa che hai vinto un buono Amazon da 500ï¿½. Devi solo cliccare un link. Cosa fai?",
                 opzioni = new List<string>{ "Clicco!", "Segnalo come spam/phishing", "Scrivo per chiedere info", "Apro il link su cellulare" },
                 rispostaCorretta = 1,
                 spiegazione = "Promesse di vincite a caso sono tipici tentativi di phishing."
             },
             new QuizDomanda {
-                domanda = "Ricevi un’email apparentemente dalla tua banca, ma con mittente 'supporto-banca@hotmail.com'. Cosa fai?",
+                domanda = "Ricevi unï¿½email apparentemente dalla tua banca, ma con mittente 'supporto-banca@hotmail.com'. Cosa fai?",
                 opzioni = new List<string>{ "Fornisco i miei dati", "Controllo il sito ufficiale", "Clicco il link", "La inoltro a un collega" },
                 rispostaCorretta = 1,
                 spiegazione = "I mittenti non ufficiali sono un chiaro segnale di frode. Verifica dal sito reale."
@@ -121,7 +121,7 @@ public class QuizManager : MonoBehaviour
                 domanda = "Ricevi una mail con un allegato .zip da un mittente che non conosci. Cosa fai?",
                 opzioni = new List<string>{ "Lo apro subito", "Lo scansiono con antivirus", "Segnalo come sospetto e lo elimino", "Lo salvo per dopo" },
                 rispostaCorretta = 2,
-                spiegazione = "Mai aprire allegati da sconosciuti. Potrebbe contenere malware."
+                spiegazione = "Mai aprire o scaricare allegati da sconosciuti. Potrebbero contenere malware."
             },
             new QuizDomanda {
                 domanda = "Una collega ti scrive chiedendo 'Mi mandi subito le credenziali per accedere al gestionale?'. Cosa fai?",
@@ -131,33 +131,33 @@ public class QuizManager : MonoBehaviour
             },
             new QuizDomanda {
                 domanda = "Ricevi una mail da 'IT-support@tuoazienda.com' che ti chiede di aggiornare la password con urgenza. Cosa fai?",
-                opzioni = new List<string>{ "Clicco il link", "Contatto l’IT ufficiale", "Cambio la password da lì", "Inoltro ad altri colleghi" },
+                opzioni = new List<string>{ "Clicco il link", "Contatto lï¿½IT ufficiale", "Cambio la password da lï¿½", "Inoltro ad altri colleghi" },
                 rispostaCorretta = 1,
                 spiegazione = "Contatta il supporto reale e non fidarti di mail urgenti non verificate."
             },
             new QuizDomanda {
                 domanda = "Aprendo una mail, vedi un link che sembra reale ma punta a un dominio strano. Cosa fai?",
-                opzioni = new List<string>{ "Lo clicco e verifico", "Lo ignoro", "Controllo col mouse l’URL", "Lo copio e incollo" },
+                opzioni = new List<string>{ "Lo clicco e verifico", "Lo ignoro", "Controllo col mouse lï¿½URL", "Lo copio e incollo" },
                 rispostaCorretta = 2,
-                spiegazione = "Passare il mouse sopra un link è un modo sicuro per verificarne la destinazione."
+                spiegazione = "Passare il mouse sopra un link ï¿½ un modo sicuro per verificarne la destinazione."
             },
             new QuizDomanda {
                 domanda = "Ricevi una fattura PDF da un cliente abituale, ma non aspettavi nulla. Cosa fai?",
-                opzioni = new List<string>{ "La apro", "Controllo l’email del mittente", "La inoltro al commerciale", "La elimino" },
+                opzioni = new List<string>{ "La apro", "Controllo lï¿½email del mittente", "La inoltro al commerciale", "La elimino" },
                 rispostaCorretta = 1,
-                spiegazione = "Verifica sempre la fonte prima di aprire documenti inattesi."
+                spiegazione = "Verifica sempre la fonte prima di aprire o scaricare documenti inattesi."
             },
             new QuizDomanda {
                 domanda = "Ti arriva un messaggio WhatsApp dal tuo 'capo' che chiede una ricarica Amazon urgente. Cosa fai?",
                 opzioni = new List<string>{ "Invio subito", "Ignoro", "Lo chiamo per verificare", "Rispondo chiedendo i dettagli" },
                 rispostaCorretta = 2,
-                spiegazione = "Questa è una forma comune di truffa: verifica sempre tramite altri canali."
+                spiegazione = "Questa ï¿½ una forma comune di truffa: verifica sempre tramite altri canali."
             },
             new QuizDomanda {
                 domanda = "Ti arriva una mail dal tuo stesso indirizzo con minacce e richiesta di denaro in bitcoin. Cosa fai?",
                 opzioni = new List<string>{ "Pago subito", "Segnalo e ignoro", "Rispondo chiedendo spiegazioni", "Avviso i colleghi" },
                 rispostaCorretta = 1,
-                spiegazione = "È una tecnica di estorsione. Non rispondere e segnala."
+                spiegazione = "ï¿½ una tecnica di estorsione. Non rispondere e segnala."
             }
         };
 
@@ -169,62 +169,62 @@ public class QuizManager : MonoBehaviour
         socialMedia.tutteLeDomande = new List<QuizDomanda>
         {
             new QuizDomanda {
-                domanda = "Un collega ti scrive su Facebook chiedendoti un bonifico urgente per l’azienda. Cosa fai?",
+                domanda = "Un collega ti scrive su Facebook chiedendoti un bonifico urgente per lï¿½azienda. Cosa fai?",
                 opzioni = new List<string>{ "Eseguo subito", "Verifico di persona", "Rispondo con i dati bancari", "Ignoro" },
                 rispostaCorretta = 1,
                 spiegazione = "Potrebbe trattarsi di un profilo falso. Verifica sempre per vie ufficiali."
             },
             new QuizDomanda {
                 domanda = "Un profilo Instagram ti promette una gift card se completi un sondaggio. Cosa fai?",
-                opzioni = new List<string>{ "Partecipo", "Segnalo come sospetto", "Condivido il link", "Chiedo se è vero" },
+                opzioni = new List<string>{ "Partecipo", "Segnalo come sospetto", "Condivido il link", "Chiedo se ï¿½ vero" },
                 rispostaCorretta = 1,
                 spiegazione = "Sono spesso truffe per rubare dati personali."
             },
             new QuizDomanda {
-                domanda = "Ricevi un messaggio LinkedIn con un’offerta di lavoro e un link per candidarti. Cosa fai?",
+                domanda = "Ricevi un messaggio LinkedIn con unï¿½offerta di lavoro e un link per candidarti. Cosa fai?",
                 opzioni = new List<string>{ "Clicco il link", "Apro LinkedIn in browser e controllo il profilo", "Rispondo subito", "Ignoro" },
                 rispostaCorretta = 1,
-                spiegazione = "Controlla sempre la legittimità del profilo prima di cliccare link esterni."
+                spiegazione = "Controlla sempre la legittimitï¿½ del profilo prima di fare qualsiasi cosa (es. cliccare link esterni)."
             },
             new QuizDomanda {
-                domanda = "Vedi un post Facebook con uno smartphone in vendita a metà prezzo. L’account è nuovo. Cosa fai?",
-                opzioni = new List<string>{ "Lo compro", "Scrivo subito", "Segnalo o ignoro", "Chiedo più foto" },
+                domanda = "Vedi un post Facebook con uno smartphone in vendita a metï¿½ prezzo. Lï¿½account ï¿½ nuovo. Cosa fai?",
+                opzioni = new List<string>{ "Lo compro", "Scrivo subito", "Segnalo o ignoro", "Chiedo piï¿½ foto" },
                 rispostaCorretta = 2,
-                spiegazione = "Molti account fake vendono oggetti inesistenti. Controlla sempre l'affidabilità."
+                spiegazione = "Molti account fake vendono oggetti inesistenti. Controlla sempre l'affidabilitï¿½."
             },
             new QuizDomanda {
                 domanda = "Un amico ti chiede su Instagram: 'Ho perso il telefono, puoi aiutarmi con una ricarica?'. Cosa fai?",
                 opzioni = new List<string>{ "Invio soldi", "Chiamo per confermare", "Rispondo con altri dettagli", "Ignoro" },
                 rispostaCorretta = 1,
-                spiegazione = "Potrebbe trattarsi di un profilo rubato. Verifica su un altro canale."
+                spiegazione = "Potrebbe trattarsi di un profilo rubato. Verifica tramite un altro canale."
             },
             new QuizDomanda {
-                domanda = "Postare foto del badge aziendale o dell’ufficio può essere...",
+                domanda = "Postare foto del badge aziendale o dellï¿½ufficio puï¿½ essere...",
                 opzioni = new List<string>{ "Un vanto", "Un rischio per la sicurezza", "Utile al marketing", "Obbligatorio" },
                 rispostaCorretta = 1,
-                spiegazione = "Può esporre informazioni sensibili. Evita contenuti aziendali visibili pubblicamente."
+                spiegazione = "Puï¿½ esporre informazioni sensibili. Evita contenuti aziendali visibili pubblicamente."
             },
             new QuizDomanda {
-                domanda = "Pubblicare su LinkedIn dettagli di un progetto riservato può...",
-                opzioni = new List<string>{ "Mostrare professionalità", "Essere pericoloso", "Aiutare l’azienda", "Far guadagnare follower" },
+                domanda = "Pubblicare su LinkedIn dettagli di un progetto riservato puï¿½...",
+                opzioni = new List<string>{ "Mostrare professionalitï¿½", "Essere pericoloso", "Aiutare lï¿½azienda", "Far guadagnare follower" },
                 rispostaCorretta = 1,
                 spiegazione = "Informazioni aziendali riservate non devono essere condivise pubblicamente."
             },
             new QuizDomanda {
-                domanda = "Un contatto LinkedIn ti chiede l’accesso a file interni aziendali. Cosa fai?",
-                opzioni = new List<string>{ "Glieli invio", "Chiedo perché", "Verifico con l’azienda", "Lo blocco subito" },
+                domanda = "Un contatto LinkedIn ti chiede lï¿½accesso a file interni aziendali. Cosa fai?",
+                opzioni = new List<string>{ "Glieli invio", "Chiedo perchï¿½", "Verifico con lï¿½azienda", "Lo blocco subito" },
                 rispostaCorretta = 2,
                 spiegazione = "Potrebbe essere un attacco mirato. Verifica sempre richieste anomale."
             },
             new QuizDomanda {
                 domanda = "In un gruppo Facebook aziendale, qualcuno pubblica un link per accedere a 'documenti importanti'. Cosa fai?",
-                opzioni = new List<string>{ "Clicco subito", "Controllo chi ha postato", "Segnalo l’admin", "Ignoro" },
+                opzioni = new List<string>{ "Clicco subito", "Controllo chi ha postato", "Lo segnalo", "Ignoro" },
                 rispostaCorretta = 2,
                 spiegazione = "Potrebbe essere un tentativo di phishing interno. Segnala e verifica."
             },
             new QuizDomanda {
-                domanda = "Un profilo con foto aziendale ti contatta e chiede soldi per un’urgenza. Cosa fai?",
-                opzioni = new List<string>{ "Aiuto subito", "Verifico identità", "Rispondo con IBAN", "Condivido il post" },
+                domanda = "Un profilo con foto aziendale ti contatta e chiede soldi per unï¿½urgenza. Cosa fai?",
+                opzioni = new List<string>{ "Aiuto subito", "Verifico identitï¿½", "Rispondo con IBAN", "Condivido il post" },
                 rispostaCorretta = 1,
                 spiegazione = "Anche con foto aziendali, i profili possono essere fake. Mai agire senza verifica."
             }
@@ -237,21 +237,21 @@ public class QuizManager : MonoBehaviour
         incidentResponse.titoloArgomento = "Incident response";
         incidentResponse.tutteLeDomande = new List<QuizDomanda>
         {
-            new QuizDomanda { domanda = "Ricevi un’email sospetta con un allegato. Cosa fai?", opzioni = new() { "La apri", "La inoltri a colleghi", "La segnali e la elimini", "La salvi" }, rispostaCorretta = 2, spiegazione = "Segnalare è la scelta giusta, mai aprire allegati sospetti." },
-            new QuizDomanda { domanda = "Il tuo computer si comporta in modo strano dopo aver aperto un file. Cosa fai?", opzioni = new() { "Continui a lavorare", "Riavvii", "Avvisi subito l’IT", "Disinstalli programmi" }, rispostaCorretta = 2, spiegazione = "Avvisare l’IT è fondamentale per una risposta rapida." },
+            new QuizDomanda { domanda = "Ricevi unï¿½email sospetta con un allegato. Cosa fai?", opzioni = new() { "La apri", "La inoltri ai colleghi", "La segnali e la elimini", "La salvi" }, rispostaCorretta = 2, spiegazione = "Segnalare ï¿½ la scelta giusta, mai aprire o salvare allegati sospetti." },
+            new QuizDomanda { domanda = "Il tuo computer si comporta in modo strano dopo aver aperto un file. Cosa fai?", opzioni = new() { "Continui a lavorare", "Riavvii", "Avvisi subito lï¿½IT", "Disinstalli programmi" }, rispostaCorretta = 2, spiegazione = "Avvisare lï¿½IT ï¿½ fondamentale per una risposta rapida." },
             new QuizDomanda { domanda = "Vedi che un collega ha lasciato il PC sbloccato. Cosa fai?", opzioni = new() { "Ignori", "Chiudi tutto", "Blocchi lo schermo", "Fai uno scherzo" }, rispostaCorretta = 2, spiegazione = "Bloccare il dispositivo previene accessi non autorizzati." },
-            new QuizDomanda { domanda = "Ricevi una telefonata in cui ti chiedono info aziendali. Come reagisci?", opzioni = new() { "Le fornisci", "Dici che non sei autorizzato e segnali", "Verifichi dopo", "Giri la richiesta" }, rispostaCorretta = 1, spiegazione = "Mai fornire info senza autorizzazione. Segnala l’incidente." },
-            new QuizDomanda { domanda = "Il tuo account mostra accessi sospetti. Cosa fai?", opzioni = new() { "Ignori", "Cambi password e segnali", "Controlli solo", "Aspetti il giorno dopo" }, rispostaCorretta = 1, spiegazione = "Cambiare password e segnalare subito è essenziale." },
-            new QuizDomanda { domanda = "Apri un allegato che scopri poi essere malevolo. Cosa fai?", opzioni = new() { "Chiudi tutto", "Disconnetti dalla rete e avvisi", "Riavvii", "Fingi nulla" }, rispostaCorretta = 1, spiegazione = "Disconnettersi e avvisare è la risposta giusta per evitare danni." },
-            new QuizDomanda { domanda = "Scopri un dispositivo USB inserito nel PC. Non è tuo. Cosa fai?", opzioni = new() { "Lo apri", "Lo lasci", "Lo segnali all’IT", "Lo porti a casa" }, rispostaCorretta = 2, spiegazione = "Mai aprire dispositivi sconosciuti. Segnalarli è la procedura corretta." },
-            new QuizDomanda { domanda = "Hai cliccato su un link sospetto. Che azione è corretta?", opzioni = new() { "Chiudi la pagina", "Segnali subito e fai una scansione", "Ignori", "Cancelli la cronologia" }, rispostaCorretta = 1, spiegazione = "Segnalare e avviare la scansione evita danni futuri." },
-            new QuizDomanda { domanda = "Una finestra ti avvisa che sei stato hackerato. Cosa fai?", opzioni = new() { "Clicchi il link", "Chiami l’IT", "Riavvii", "Rispondi" }, rispostaCorretta = 1, spiegazione = "Spesso sono allarmi fake. L’IT può verificare e agire correttamente." },
-            new QuizDomanda { domanda = "Noti che qualcuno tenta di accedere al tuo account. Cosa fai?", opzioni = new() { "Cambi password e segnali", "Ignori", "Scrivi a supporto esterno", "Avvisi un collega" }, rispostaCorretta = 0, spiegazione = "Cambiare subito la password è la prima difesa." },
+            new QuizDomanda { domanda = "Ricevi una telefonata in cui ti chiedono info aziendali. Come reagisci?", opzioni = new() { "Le fornisci", "Dici che non sei autorizzato e segnali", "Verifichi dopo", "Giri la richiesta" }, rispostaCorretta = 1, spiegazione = "Mai fornire info senza autorizzazione. Segnala lï¿½incidente." },
+            new QuizDomanda { domanda = "Il tuo account mostra accessi sospetti. Cosa fai?", opzioni = new() { "Ignori", "Cambi password e segnali", "Controlli solo", "Aspetti il giorno dopo" }, rispostaCorretta = 1, spiegazione = "Cambiare password e segnalare subito ï¿½ essenziale." },
+            new QuizDomanda { domanda = "Apri un allegato che scopri poi essere malevolo. Cosa fai?", opzioni = new() { "Chiudi tutto", "Disconnetti dalla rete e avvisi", "Riavvii", "Fingi nulla" }, rispostaCorretta = 1, spiegazione = "Disconnettersi e avvisare ï¿½ la risposta giusta per evitare danni." },
+            new QuizDomanda { domanda = "Scopri un dispositivo USB inserito nel PC. Non ï¿½ tuo. Cosa fai?", opzioni = new() { "Lo apri", "Lo lasci", "Lo segnali allï¿½IT", "Lo porti a casa" }, rispostaCorretta = 2, spiegazione = "Mai aprire dispositivi sconosciuti. Segnalarli ï¿½ la procedura corretta." },
+            new QuizDomanda { domanda = "Hai cliccato su un link sospetto. Che azione ï¿½ corretta?", opzioni = new() { "Chiudi la pagina", "Segnali subito e fai una scansione", "Ignori", "Cancelli la cronologia" }, rispostaCorretta = 1, spiegazione = "Segnalare e avviare la scansione evita danni futuri." },
+            new QuizDomanda { domanda = "Una finestra ti avvisa che sei stato hackerato. Cosa fai?", opzioni = new() { "Ignori", "Chiami lï¿½IT", "Riavvii", "Rispondi" }, rispostaCorretta = 1, spiegazione = "Spesso sono allarmi fake. Lï¿½IT puï¿½ verificare e agire correttamente." },
+            new QuizDomanda { domanda = "Noti che qualcuno tenta di accedere al tuo account. Cosa fai?", opzioni = new() { "Cambi password e segnali", "Ignori", "Scrivi a supporto esterno", "Avvisi un collega" }, rispostaCorretta = 0, spiegazione = "Cambiare subito la password ï¿½ la prima difesa." },
             new QuizDomanda { domanda = "Dopo una truffa subita da un collega, cosa dovrebbe fare il team?", opzioni = new() { "Nulla", "Una riunione formativa", "Punire il collega", "Bloccare i dispositivi" }, rispostaCorretta = 1, spiegazione = "Formazione e consapevolezza riducono il rischio futuro." },
-            new QuizDomanda { domanda = "L'antivirus segnala una minaccia ma non agisce. Cosa fai?", opzioni = new() { "Lo disinstalli", "Continui a lavorare", "Avvisi il supporto IT", "Aspetti l’update" }, rispostaCorretta = 2, spiegazione = "Solo il supporto può verificare e intervenire efficacemente." },
-            new QuizDomanda { domanda = "Qual è il primo passo in caso di incidente informatico?", opzioni = new() { "Segnalare", "Ignorare", "Cancellare file", "Chiedere a un collega" }, rispostaCorretta = 0, spiegazione = "Segnalare consente di attivare la risposta coordinata." },
-            new QuizDomanda { domanda = "Un software si installa da solo. Cosa fai?", opzioni = new() { "Riavvii", "Disinstalli subito", "Blocchi rete e segnali", "Lo ignori" }, rispostaCorretta = 2, spiegazione = "Potrebbe essere malware: disconnettersi è fondamentale." },
-            new QuizDomanda { domanda = "Un collega riceve una truffa e la inoltra. Come reagisci?", opzioni = new() { "Gli spieghi e avvisi l’IT", "Ignori", "Rispondi a tutti", "Fai lo stesso" }, rispostaCorretta = 0, spiegazione = "Educare e segnalare è la risposta più utile." }
+            new QuizDomanda { domanda = "L'antivirus segnala una minaccia ma non agisce. Cosa fai?", opzioni = new() { "Lo disinstalli", "Continui a lavorare", "Avvisi il supporto IT", "Aspetti lï¿½update" }, rispostaCorretta = 2, spiegazione = "Solo il supporto puï¿½ verificare e intervenire efficacemente." },
+            new QuizDomanda { domanda = "Qual ï¿½ il primo passo in caso di incidente informatico?", opzioni = new() { "Segnalare", "Ignorare", "Cancellare file", "Chiedere a un collega" }, rispostaCorretta = 0, spiegazione = "Segnalare consente di attivare la risposta coordinata." },
+            new QuizDomanda { domanda = "Un software si installa da solo. Cosa fai?", opzioni = new() { "Riavvii", "Disinstalli subito", "Ti disconnetti e segnali", "Lo ignori" }, rispostaCorretta = 2, spiegazione = "Potrebbe essere malware: disconnettersi ï¿½ fondamentale." },
+            new QuizDomanda { domanda = "Un collega riceve una truffa e la inoltra. Come reagisci?", opzioni = new() { "Gli spieghi e avvisi lï¿½IT", "Ignori", "Rispondi a tutti", "Fai lo stesso" }, rispostaCorretta = 0, spiegazione = "Educare e segnalare ï¿½ la risposta piï¿½ utile." }
         };
 
         tuttiGliArgomenti.Add(incidentResponse);
@@ -261,21 +261,21 @@ public class QuizManager : MonoBehaviour
         gestioneDispositivi.titoloArgomento = "Gestione dispositivi";
         gestioneDispositivi.tutteLeDomande = new List<QuizDomanda>
         {
-            new QuizDomanda { domanda = "Cosa dovresti fare quando ti allontani dalla postazione?", opzioni = new() { "Lasciare il PC acceso", "Bloccare lo schermo", "Scollegare tastiera", "Stacco il mouse" }, rispostaCorretta = 1, spiegazione = "Bloccare lo schermo impedisce accessi non autorizzati." },
-            new QuizDomanda { domanda = "Un collega ti chiede di usare il tuo PC. Cosa fai?", opzioni = new() { "Glielo dai", "Ti assicuri che abbia le autorizzazioni", "Lasci solo browser aperto", "Gli crei un account suo" }, rispostaCorretta = 1, spiegazione = "Solo personale autorizzato può usare dispositivi aziendali." },
-            new QuizDomanda { domanda = "Se il tuo PC mostra richieste strane, cosa può significare?", opzioni = new() { "Nulla", "Aggiornamento", "Compromissione", "Rallentamento normale" }, rispostaCorretta = 2, spiegazione = "Comportamenti anomali vanno sempre segnalati." },
-            new QuizDomanda { domanda = "Perché aggiornare software e sistema operativo è essenziale?", opzioni = new() { "Di solito li salto", "Per correggere bug", "Per sicurezza", "Per farmi perdere tempo" }, rispostaCorretta = 2, spiegazione = "Gli aggiornamenti correggono vulnerabilità sfruttabili." },
-            new QuizDomanda { domanda = "È sicuro usare Wi-Fi pubblici dal laptop aziendale?", opzioni = new() { "Sì", "Solo se hai VPN", "Mai", "Solo per mail" }, rispostaCorretta = 1, spiegazione = "La VPN cifra i dati anche su reti non protette." },
+            new QuizDomanda { domanda = "Cosa dovresti fare quando ti allontani dalla postazione?", opzioni = new() { "Lasciare il PC acceso", "Bloccare lo schermo", "Scollegare tastiera", "Scollegare il mouse" }, rispostaCorretta = 1, spiegazione = "Bloccare lo schermo impedisce accessi non autorizzati." },
+            new QuizDomanda { domanda = "Un collega ti chiede di usare il tuo PC. Cosa fai?", opzioni = new() { "Glielo dai", "Ti assicuri che abbia le autorizzazioni", "Lasci solo browser aperto", "Gli crei un account suo" }, rispostaCorretta = 1, spiegazione = "Solo personale autorizzato puï¿½ usare dispositivi aziendali." },
+            new QuizDomanda { domanda = "Se il tuo PC mostra richieste strane, cosa puï¿½ significare?", opzioni = new() { "Nulla", "Aggiornamento", "Compromissione", "Rallentamento normale" }, rispostaCorretta = 2, spiegazione = "Comportamenti anomali vanno sempre segnalati." },
+            new QuizDomanda { domanda = "Perchï¿½ aggiornare software e sistema operativo ï¿½ essenziale?", opzioni = new() { "Di solito li salto", "Per correggere bug", "Per sicurezza", "Per farmi perdere tempo" }, rispostaCorretta = 2, spiegazione = "Gli aggiornamenti correggono vulnerabilitï¿½ sfruttabili." },
+            new QuizDomanda { domanda = "ï¿½ sicuro usare Wi-Fi pubblici dal laptop aziendale?", opzioni = new() { "Sï¿½", "Solo se hai VPN", "Mai", "Solo per mail" }, rispostaCorretta = 1, spiegazione = "Non Ã¨ sicuro usare Wi-fi pubblici. Inoltre, la VPN cifra i dati anche su reti non protette." },
             new QuizDomanda { domanda = "Dove NON devi salvare file aziendali?", opzioni = new() { "Su cloud autorizzato", "Su hard disk esterno", "Su chiavetta personale", "Non li salvo e faccio prima" }, rispostaCorretta = 0, spiegazione = "Dispositivi personali non garantiscono la sicurezza richiesta." },
-            new QuizDomanda { domanda = "Come puoi proteggere il tuo smartphone aziendale?", opzioni = new() { "Senza codice", "Solo con impronta", "Con password e blocco automatico", "Non è necessario" }, rispostaCorretta = 2, spiegazione = "Una doppia protezione riduce i rischi." },
+            new QuizDomanda { domanda = "Come puoi proteggere il tuo smartphone aziendale?", opzioni = new() { "Senza codice", "Solo con impronta", "Con password e blocco automatico", "Non ï¿½ necessario" }, rispostaCorretta = 2, spiegazione = "Una doppia protezione riduce i rischi." },
             new QuizDomanda { domanda = "Trovi una chiavetta USB sconosciuta. Cosa fai?", opzioni = new() { "La apri", "La usi per backup", "La segnali", "La tieni come riserva" }, rispostaCorretta = 2, spiegazione = "Potrebbe contenere malware: mai usarla." },
-            new QuizDomanda { domanda = "Come proteggere i dispositivi durante i viaggi?", opzioni = new() { "Lasciarli in valigia", "Non portarli", "Usare custodie protette e tenerli sempre con te", "Spegnere tutto" }, rispostaCorretta = 2, spiegazione = "La protezione fisica è essenziale in ambienti pubblici." },
-            new QuizDomanda { domanda = "Qual è una buona pratica per la gestione delle password su dispositivo aziendale?", opzioni = new() { "Scriverle su un post-it", "Usare un password manager sicuro", "Ricordarle tutte", "Usare la stessa" }, rispostaCorretta = 1, spiegazione = "Un gestore sicuro evita password deboli o riutilizzate." },
-            new QuizDomanda { domanda = "Il tuo smartphone si connette automaticamente a una rete sconosciuta. Cosa fai?", opzioni = new() { "Navigo normalmente", "Verifico e disconnetto", "Uso VPN", "Attivo Bluetooth" }, rispostaCorretta = 1, spiegazione = "Le reti automatiche possono essere pericolose." },
-            new QuizDomanda { domanda = "Dovresti mai prestare il tuo badge aziendale?", opzioni = new() { "Sì, se serve", "No", "Solo ai colleghi", "Solo all’IT" }, rispostaCorretta = 2, spiegazione = "È personale e non va condiviso." },
-            new QuizDomanda { domanda = "Che tipo di antivirus usare?", opzioni = new() { "Gratis qualsiasi", "Nessuno, se stai attento", "Antivirus aziendale gestito", "Quello già sul browser" }, rispostaCorretta = 2, spiegazione = "La protezione va centralizzata e controllata." },
-            new QuizDomanda { domanda = "Un dispositivo aziendale non risponde. Cosa fai?", opzioni = new() { "Forzi la chiusura", "Aspetti", "Avvisi il reparto IT", "Riavvii 5 volte" }, rispostaCorretta = 2, spiegazione = "L’IT deve verificare guasti o manomissioni." },
-            new QuizDomanda { domanda = "Qual è la prima cosa da fare dopo aver ricevuto un nuovo laptop aziendale?", opzioni = new() { "Cambiare sfondo", "Installare giochi", "Impostare sicurezza e credenziali", "Dare accesso a tutti" }, rispostaCorretta = 2, spiegazione = "L’inizializzazione sicura è fondamentale." }
+            new QuizDomanda { domanda = "Come proteggere i dispositivi durante i viaggi?", opzioni = new() { "Lasciarli in valigia", "Non portarli", "Usare custodie protette e tenerli sempre con te", "Spegnere tutto" }, rispostaCorretta = 2, spiegazione = "La protezione fisica ï¿½ essenziale in ambienti pubblici." },
+            new QuizDomanda { domanda = "Qual ï¿½ una buona pratica per la gestione delle password su dispositivo aziendale?", opzioni = new() { "Scriverle su un post-it", "Usare un password manager sicuro", "Ricordarle tutte", "Usare la stessa" }, rispostaCorretta = 1, spiegazione = "Un gestore sicuro evita password deboli o riutilizzate." },
+            new QuizDomanda { domanda = "Il tuo smartphone si connette automaticamente a una rete sconosciuta. Cosa fai?", opzioni = new() { "Navigo normalmente", "Verifico e disconnetto", "Uso VPN", "Attivo Bluetooth" }, rispostaCorretta = 1, spiegazione = "Queste reti possono essere pericolose. Meglio disconnettersi." },
+            new QuizDomanda { domanda = "Dovresti mai prestare il tuo badge aziendale?", opzioni = new() { "Sï¿½, se serve", "No", "Solo ai colleghi", "Solo allï¿½IT" }, rispostaCorretta = 2, spiegazione = "ï¿½ personale e non va condiviso." },
+            new QuizDomanda { domanda = "Che tipo di antivirus usare?", opzioni = new() { "Gratis qualsiasi", "Nessuno, se stai attento", "Antivirus aziendale gestito", "Quello giï¿½ sul browser" }, rispostaCorretta = 2, spiegazione = "La protezione va centralizzata e controllata." },
+            new QuizDomanda { domanda = "Un dispositivo aziendale non risponde. Cosa fai?", opzioni = new() { "Forzi la chiusura", "Aspetti", "Avvisi il reparto IT", "Riavvii 5 volte" }, rispostaCorretta = 2, spiegazione = "Lï¿½IT deve verificare guasti o manomissioni." },
+            new QuizDomanda { domanda = "Qual ï¿½ la prima cosa da fare dopo aver ricevuto un nuovo laptop aziendale?", opzioni = new() { "Cambiare sfondo", "Installare giochi", "Impostare sicurezza e credenziali", "Dare accesso a tutti" }, rispostaCorretta = 2, spiegazione = "Lï¿½inizializzazione sicura ï¿½ fondamentale." }
         };
 
         tuttiGliArgomenti.Add(gestioneDispositivi);
