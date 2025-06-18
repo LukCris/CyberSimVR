@@ -28,8 +28,8 @@ public class EmailUIManager : MonoBehaviour
     public GameObject emailListPanel;
     public GameObject emailDetailPanel;
     public GameObject correctclassificationPanel;
-    public TextMeshProUGUI feedbackText;
     public GameObject wrongclassificationPanel;
+    public GameObject linkclassificationPanel;
     public GameObject inboxHeader;
 
     [Header("Prefabs e Container")]
@@ -100,13 +100,14 @@ public class EmailUIManager : MonoBehaviour
         emailDetailPanel.SetActive(false);
         wrongclassificationPanel.SetActive(false);
         correctclassificationPanel.SetActive(false);
+        linkclassificationPanel.SetActive(false);
         emailHistoryPanel.SetActive(false);
 
         correctClassifications = 0;
         totalClassified = 0;
 
-        phishingButton.onClick.AddListener(() => ClassifyEmail(true));
-        safeButton.onClick.AddListener(() => ClassifyEmail(false));
+        phishingButton.onClick.AddListener(() => ClassifyEmail(true, false));
+        safeButton.onClick.AddListener(() => ClassifyEmail(false, false));
         showHistoryButton.onClick.AddListener(ShowEmailHistory);
         backToEndButton.onClick.AddListener(CloseHistoryPanel);
     }
@@ -280,10 +281,10 @@ public class EmailUIManager : MonoBehaviour
             });
     }
 
-    private IEnumerator DelayedProceed(bool isCorrect, float delay)
+    private IEnumerator DelayedProceed(bool isCorrect, bool linkClicked, float delay)
     {
         yield return new WaitForSeconds(delay);
-        ProceedAfterFeedback(isCorrect);
+        ProceedAfterFeedback(isCorrect, linkClicked);
     }
 
     // Viene chiamato da TMPLinkHandler ogni volta che il player clicca un link nel bodyText.
@@ -292,15 +293,14 @@ public class EmailUIManager : MonoBehaviour
         if (selectedEmail != null && selectedEmail.isPhishing && !selectedEmail.isClassified)
         {
             // Classifichiamo come errata la mail perché l’utente ha cliccato un link di phishing
-            ClassifyEmail(false);
+            ClassifyEmail(false, true);
 
-            feedbackText.text = "Hai cliccato su un link di phishing! La mail è stata classificata come errata.";
-            wrongclassificationPanel.SetActive(true);
-            StartCoroutine(DelayedProceed(false, 2.5f));
+            linkclassificationPanel.SetActive(true);
+            StartCoroutine(DelayedProceed(false, true, 2.5f));
         }
     }
 
-    public void ClassifyEmail(bool markedAsPhishing)
+    public void ClassifyEmail(bool markedAsPhishing, bool linkClicked)
     {
         if (selectedEmail == null) return;
 
@@ -328,15 +328,25 @@ public class EmailUIManager : MonoBehaviour
         if (isCorrect)
         {
             correctclassificationPanel.SetActive(true);
+            StartCoroutine(DelayedProceed(isCorrect, false, 2.5f));
         }
         else
         {
-            wrongclassificationPanel.SetActive(true);
+            if (linkClicked)
+            {
+                linkclassificationPanel.SetActive(true);
+                StartCoroutine(DelayedProceed(isCorrect, true, 2.5f));
+            }
+            else
+            {
+                wrongclassificationPanel.SetActive(true);
+                StartCoroutine(DelayedProceed(isCorrect, false, 2.5f));
+            }
         }
-        StartCoroutine(DelayedProceed(isCorrect, 2.5f));
+        
     }
 
-    void ProceedAfterFeedback(bool isCorrect)
+    void ProceedAfterFeedback(bool isCorrect, bool linkClicked)
     {
         if (isCorrect)
         {
@@ -344,7 +354,14 @@ public class EmailUIManager : MonoBehaviour
         }
         else
         {
-            wrongclassificationPanel.SetActive(false);
+            if (linkClicked)
+            {
+                linkclassificationPanel.SetActive(false);
+            }
+            else
+            {
+                wrongclassificationPanel.SetActive(false);
+            }
         }
         if (totalClassified >= emailList.Count)
             ShowEndScreen();
