@@ -171,7 +171,7 @@ public class EmailUIManager : MonoBehaviour
             date = "25 maggio 2025",
             body = "Caro collega,\n\nPer continuare a utilizzare la VPN aziendale, è necessario scaricare il nuovo certificato entro oggi: \n\nhttp://azlenda-it-vpn.com/update\n\nGrazie,\nAmministrazione IT",
             isPhishing = true,
-            explanation = "Spoofing del dominio ('azlenda.it'), link esterno con nome VPN sospetto."
+            explanation = "Dominio simile ma falso ('azlenda.com'); link esterno con nome VPN sospetto."
         });
 
         emailList.Add(new Email

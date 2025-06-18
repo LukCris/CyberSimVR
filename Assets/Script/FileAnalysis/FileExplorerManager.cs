@@ -134,7 +134,7 @@ public class FileExplorerManager : MonoBehaviour
         rispostaStorico.Add(new FileResponse
         {
             fileName = currentDetailFile.fileName,
-            userAnswer = "Segnato malevolo",
+            userAnswer = "Malevolo",
             correct = correct,
             explanation = correct
                 ? "Il file conteneva codice pericoloso."

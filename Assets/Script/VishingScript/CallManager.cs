@@ -107,7 +107,7 @@ public class CallManager : MonoBehaviour
                 },
                 correctOptionIndex = 0,
                 feedbacks = new[] {
-                    "Ottima decisione!",
+                    "Ottima decisione! Sempre meglio confermare l'identità",
                     "Errore. Mai fidarsi senza conferma dell’identità."
                 },
                 nextNodeIndices = new[] { 3, 3 }
