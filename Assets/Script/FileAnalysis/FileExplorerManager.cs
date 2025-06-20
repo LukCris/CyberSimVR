@@ -181,9 +181,19 @@ public class FileExplorerManager : MonoBehaviour
         correctCount += correct;
         wrongCount += wrong;
 
+        // Se ho appena classificato l’ultimo file...
         if (correctCount + wrongCount == files.Count)
-            ShowEndScreen();
+        {
+            StartCoroutine(MostraFineScenarioDopoPopup(2f)); // 2 secondi = stesso delay della popup
+        }
     }
+
+    IEnumerator MostraFineScenarioDopoPopup(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ShowEndScreen();
+    }
+
 
     void ShowEndScreen()
     {
