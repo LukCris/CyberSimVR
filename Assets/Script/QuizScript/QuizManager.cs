@@ -96,7 +96,7 @@ public class QuizManager : MonoBehaviour
 
         //ARGOMENTO DEL PHISHING
         ArgomentoQuiz phishingSituazionale = new ArgomentoQuiz();
-        phishingSituazionale.titoloArgomento = "Situazioni phishing reali";
+        phishingSituazionale.titoloArgomento = "Phishing";
         phishingSituazionale.tutteLeDomande = new List<QuizDomanda>
         {
             new QuizDomanda {
